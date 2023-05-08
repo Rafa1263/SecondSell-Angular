@@ -17,6 +17,11 @@ export class LoginComponent implements OnInit {
 
   // AL CREAR EL COMPONENTE NOS SUSCRIBIMOS AL OBSERVABLE QUE RETORNA LA FUNCION GETUSERS
   ngOnInit(): void {
+    this.authservice.user.subscribe((us: User) => {
+      if (us) {
+        this.router.navigate(['/upload'])
+      }
+    })
     this.authservice.getUsers().subscribe(() => {
       // ESTO NOS ASEGURA QUE SE HAN CARGADO LOS USUARIOS
       this.loaded = true
