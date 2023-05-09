@@ -1,1 +1,88 @@
-{{product?.name}}
+<!--HEADER-->
+<header>
+  <section>
+    <div>
+      Logotype
+    </div>
+    <div>
+      Registrate o inicia sesión
+    </div>
+  </section>
+  <div>
+    <input type="text" placeholder="">
+    <img src="https://cdn-icons-png.flaticon.com/512/622/622605.png">
+    <span>Buscar en todas las categorías</span>
+
+  </div>
+
+</header>
+<!--STAR RATE-->
+<section>
+  <img class="arrow" routerLink="/products" src="https://gcdnb.pbrd.co/images/dzXDqXJA6Xki.png?o=1">
+  <div class="profile-eng">
+    <div class="profile">
+      <img [src]="user.photo">
+    </div>
+    <div class="user-rate">
+      <div>
+        <p>{{user.name}} </p><span>⭐⭐⭐⭐⭐</span>
+      </div>
+      <span>1000 valoraciones</span>
+    </div>
+  </div>
+</section>
+<!--ITEM NAME-->
+<section>
+  <div class="product-image">
+    <div class="sold-info">
+      <i style="color:green" class="fa-solid fa-handshake-angle"></i>
+      <span>Disponible</span>
+    </div>
+    <div class="pagination-product">
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+  <div class="product-price">
+    <span>{{product.price}} EUR</span>
+    <span>{{product.state}}</span>
+  </div>
+  <span>{{product.name}}</span>
+</section>
+<!--END ITEM NAME-->
+<!--ITEM DESC-->
+<section>
+  <div class="spacer"></div>
+  <section>
+    <span>{{product.description}}</span>
+
+    <div><span>10-01-2023</span>
+      <div>
+        <div>
+          <i class="fa-regular fa-eye"></i>
+          <span>17</span>
+        </div>
+        <div>
+          <i class="fa-sharp fa-regular fa-heart"></i> <span>13</span>
+        </div>
+      </div>
+    </div>
+  </section>
+  <div class="spacer"></div>
+</section>
+<!--END ITEM DESCE-->
+<!--USER COMMENT-->
+<section>
+  <div>
+    <div></div>
+    <div>
+      <div></div>
+      <div></div>
+    </div>
+  </div>
+</section>
+<!--FOOTER-->
+<footer>
+  FOOTER
+</footer>
+<!--FIN FOOTER-->

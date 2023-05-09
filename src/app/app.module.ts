@@ -15,6 +15,7 @@ import { HomeComponent } from 'src/app/views/home/home.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
 import { TopPipeModule } from 'src/app/pipes/top-pipe.module';
 import { ProductComponent } from 'src/app/views/product/product.component';
+import { CategorySizePipeModule } from 'src/app/pipes/categorySize-pipe.module';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ProductComponent } from 'src/app/views/product/product.component';
     AppRoutingModule,
     HttpClientModule,
     PaginationPipeModule,
-    TopPipeModule
+    TopPipeModule,
+    CategorySizePipeModule,
 
 
   ],

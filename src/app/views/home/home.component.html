@@ -32,17 +32,17 @@
 <!--DESCUBRE POR CATEGORIA-->
 <section>
   <span>Descubre por categoría</span>
-  <section>
-    <div *ngFor="let category of categories ">
+  <section id="categories">
+    <div *ngFor="let category of categories | category: pagination.categorySize">
       <div></div>
       <p>{{category.name}}</p>
     </div>
-    <div *ngFor="let blank of pagination.categorySize">
+    <div *ngFor="let blank of pagination.categroyBlank">
       <div></div>
       <p></p>
     </div>
   </section>
-  <div><input type="button" value="Ver Todas">
+  <div id="show"><input type="button" (click)="showCategories()" value="Ver Todas">
   </div>
 
 </section>

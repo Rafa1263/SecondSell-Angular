@@ -15,6 +15,10 @@ export class HomeComponent implements OnInit {
   public products: Product[] = []
   public categories: Category[] = []
   public pagination: Pagination = {} as Pagination
+
+  private readonly categorySize = 8
+  private readonly categoryBlank = [0, 1, 2, 3]
+
   constructor(private router: Router, private productService: ProductService, private categoryService: CategoryService) {
 
   }
@@ -26,7 +30,9 @@ export class HomeComponent implements OnInit {
       this.categories = this.categoryService.categoryList
     })
     this.pagination.pageSize = 8
-    this.pagination.categorySize = [0, 1, 2, 3]
+    this.pagination.categorySize = 8
+    this.pagination.categroyBlank = [0, 1, 2, 3]
+    this.pagination.categoryDisplay = false
   }
   public getTimeDifference(created_at: Date): string {
     const timeElapsed = Date.now() - new Date(created_at).getTime();
@@ -53,6 +59,20 @@ export class HomeComponent implements OnInit {
     const months = days / 30;
     return `${Math.floor(months)} months`;
 
+  }
+  public showCategories(): void {
+    if (this.pagination.categoryDisplay === false) {
+      document.getElementById("show")!.classList.add("nonMarginTop")
+      this.pagination.categorySize = this.categories.length
+      this.pagination.categroyBlank = []
+      this.pagination.categoryDisplay = true
+    }
+    else {
+      document.getElementById("show")!.classList.remove("nonMarginTop")
+      this.pagination.categorySize = this.categorySize
+      this.pagination.categroyBlank = this.categoryBlank
+      this.pagination.categoryDisplay = false
+    }
   }
   public productRedirect(productId: number) {
     const proute = `/product/${productId}`

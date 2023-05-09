@@ -1,5 +1,7 @@
 
 export interface Pagination {
   pageSize: number;
-  categorySize: Array<number>
+  categorySize: number;
+  categroyBlank: Array<number>;
+  categoryDisplay: boolean
 }

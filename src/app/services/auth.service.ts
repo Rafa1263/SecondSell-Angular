@@ -89,6 +89,10 @@ export class AuthService {
       })))
   }
 
+  public getUser(id: number): Observable<User> {
+    return this.http.get<User>(`${this.CONFIG_URL}/users/${id}`)
+  }
+
   // FUNCIÓN PARA SETTEAR UNA COOKIE A UN USER
   public setCookie(token: string): void {
     document.cookie = `auth = ${token}; path = /`
