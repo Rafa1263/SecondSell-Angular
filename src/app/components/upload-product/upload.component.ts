@@ -69,7 +69,8 @@ export class UploadComponent {
           price: parseFloat(productPrice.value).toFixed(2),
           categoryId: categoryId,
           userId: this.user.id!,
-          likes: 0
+          likes: 0,
+          active: true
         };
         console.log(product)
         this.productService.postProduct(product).subscribe(() => {

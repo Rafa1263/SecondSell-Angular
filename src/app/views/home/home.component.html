@@ -33,51 +33,11 @@
 <section>
   <span>Descubre por categoría</span>
   <section>
-    <div>
+    <div *ngFor="let category of categories ">
       <div></div>
-      <p>Category</p>
+      <p>{{category.name}}</p>
     </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p>Category</p>
-    </div>
-    <div>
-      <div></div>
-      <p></p>
-    </div>
-    <div>
-      <div></div>
-      <p></p>
-    </div>
-    <div>
-      <div></div>
-      <p></p>
-    </div>
-    <div>
+    <div *ngFor="let blank of pagination.categorySize">
       <div></div>
       <p></p>
     </div>
@@ -92,63 +52,14 @@
   <span>Articulos populares</span>
   <div class="dotted"></div>
   <section>
-    <div>
+    <div *ngFor="let product of products | top">
       <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
+      <span>{{product.name}}</span>
+      <span>{{product.description}}</span>
+      <span>Hace {{getTimeDifference(product.created_at)}}</span>
+      <span>{{product.price}} €</span>
+      <span>🤍 {{product.likes}}</span>
     </div>
-    <div>
-      <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
-    </div>
-    <div>
-      <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
-    </div>
-    <div>
-      <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
-    </div>
-    <div>
-      <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
-    </div>
-    <div>
-      <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
-    </div>
-    <div>
-      <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
-    </div>
-
   </section>
 </section>
 <!--FIN ARTIULOS POPULARES-->

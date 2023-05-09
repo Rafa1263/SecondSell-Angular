@@ -13,6 +13,7 @@ import { PaginationPipeModule } from 'src/app/pipes/product-pipe.module';
 import { HomeComponentModule } from 'src/app/views/home/home.module';
 import { HomeComponent } from 'src/app/views/home/home.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
+import { TopPipeModule } from 'src/app/pipes/top-pipe.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { UploadPage } from 'src/app/views/upload/upload.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    PaginationPipeModule
+    PaginationPipeModule,
+    TopPipeModule
 
 
   ],

@@ -10,6 +10,7 @@ export interface Product {
   price: string;
   categoryId: number;
   likes: number;
+  active: boolean;
   //UPDATE RELATIONS BETWEEN USER AND PRODUCT
   userId: number;
 }

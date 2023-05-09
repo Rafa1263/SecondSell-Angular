@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Category } from 'src/app/models/category.model';
 import { Pagination } from 'src/app/models/pagination.model';
 import { Product } from 'src/app/models/product.model';
+import { CategoryService } from 'src/app/services/category.service';
 import { ProductService } from 'src/app/services/products.service';
 
 @Component({
@@ -10,9 +12,20 @@ import { ProductService } from 'src/app/services/products.service';
 })
 export class HomeComponent implements OnInit {
   public products: Product[] = []
+  public categories: Category[] = []
   public pagination: Pagination = {} as Pagination
-  constructor(private productService: ProductService) {
+  constructor(private productService: ProductService, private categoryService: CategoryService) {
 
+  }
+  ngOnInit() {
+    this.productService.getProducts().subscribe(() => {
+      this.products = this.productService.productList
+    })
+    this.categoryService.getCategories().subscribe(() => {
+      this.categories = this.categoryService.categoryList
+    })
+    this.pagination.pageSize = 8
+    this.pagination.categorySize = [0, 1, 2, 3]
   }
   public getTimeDifference(created_at: Date): string {
     const timeElapsed = Date.now() - new Date(created_at).getTime();
@@ -41,13 +54,5 @@ export class HomeComponent implements OnInit {
 
   }
 
-  ngOnInit() {
-    this.productService.getProducts().subscribe(() => {
-      this.products = this.productService.productList
-      console.log(this.getTimeDifference(this.products[0].created_at))
 
-    })
-
-    this.pagination.pageSize = 8
-  }
 }
