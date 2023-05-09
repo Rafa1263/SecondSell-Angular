@@ -10,6 +10,7 @@ export interface Product {
   price: number;
   categoryId: number;
 
+
   //UPDATE RELATIONS BETWEEN USER AND PRODUCT
   userId: number;
 }

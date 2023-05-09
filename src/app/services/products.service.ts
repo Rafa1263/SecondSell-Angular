@@ -11,10 +11,7 @@ export class ProductService {
   private readonly CONFIG_URL = 'http://localhost:3000';
 
   // ARRAY DE PRODUCTOS
-  private productList: Product[] = []
-
-  // PRODUCTO CON EL QUE TRABAJAREMOS EN TODAS LAS VISTAS
-  public products: BehaviorSubject<Product[]> = new BehaviorSubject([] as Product[])
+  public productList: Product[] = []
 
   constructor(public http: HttpClient) {
 
