@@ -221,27 +221,31 @@ header+section+section+section {
   width: 100%;
   display: grid;
   overflow: hidden;
+  overflow-x: scroll;
+  margin-top: 1rem;
 
   .dotted {
-    margin-top: 0.8rem;
-    width: 100%;
+    margin-top: 2rem;
+    width: $card-width * 21;
     height: 0px;
     border: 1px dotted;
   }
 
   span {
     &:nth-child(1) {
+      position: absolute;
       font-size: $content-introduction-size;
-      margin-top: 1rem;
-      margin-left: 2%;
+
+      margin-left: 4%;
     }
   }
 
   section {
+
     display: flex;
     justify-content: space-between;
     margin: 1%;
-    width: $card-width * 15;
+    width: $card-width * 20;
 
     div {
       width: $card-width;
