@@ -71,6 +71,7 @@ export class UploadComponent {
           userId: this.user.id!,
           likes: 0,
           active: true
+
         };
         console.log(product)
         this.productService.postProduct(product).subscribe(() => {

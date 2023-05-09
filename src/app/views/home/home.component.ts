@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Category } from 'src/app/models/category.model';
 import { Pagination } from 'src/app/models/pagination.model';
 import { Product } from 'src/app/models/product.model';
@@ -14,7 +15,7 @@ export class HomeComponent implements OnInit {
   public products: Product[] = []
   public categories: Category[] = []
   public pagination: Pagination = {} as Pagination
-  constructor(private productService: ProductService, private categoryService: CategoryService) {
+  constructor(private router: Router, private productService: ProductService, private categoryService: CategoryService) {
 
   }
   ngOnInit() {
@@ -53,6 +54,9 @@ export class HomeComponent implements OnInit {
     return `${Math.floor(months)} months`;
 
   }
-
+  public productRedirect(productId: number) {
+    const proute = `/product/${productId}`
+    this.router.navigate([proute])
+  }
 
 }

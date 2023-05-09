@@ -14,6 +14,7 @@ import { HomeComponentModule } from 'src/app/views/home/home.module';
 import { HomeComponent } from 'src/app/views/home/home.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
 import { TopPipeModule } from 'src/app/pipes/top-pipe.module';
+import { ProductComponent } from 'src/app/views/product/product.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { TopPipeModule } from 'src/app/pipes/top-pipe.module';
     UploadComponent,
     UploadPage,
     HomeComponent,
-    HeaderComponent
+    HeaderComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
