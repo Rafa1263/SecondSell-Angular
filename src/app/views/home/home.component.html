@@ -156,13 +156,13 @@
 <section>
   <span>Publicados recientemente</span>
   <section>
-    <div *ngFor="let product of products | a : pagination.pageSize">
+    <div *ngFor="let product of products | pagination : pagination.pageSize">
       <div></div>
-      <span>iPhone 11</span>
-      <span>128 GB - Negro - Libre</span>
-      <span>Hace 12h</span>
-      <span>100,00€</span>
-      <span>🤍12</span>
+      <span>{{product.name}}</span>
+      <span>{{product.description}}</span>
+      <span>Hace {{getTimeDifference(product.created_at)}}</span>
+      <span>{{product.price}} €</span>
+      <span>🤍 {{product.likes}}</span>
     </div>
 
   </section>

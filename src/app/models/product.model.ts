@@ -7,10 +7,9 @@ export interface Product {
   description: string;
   state: string;
   photo?: string;
-  price: number;
+  price: string;
   categoryId: number;
-
-
+  likes: number;
   //UPDATE RELATIONS BETWEEN USER AND PRODUCT
   userId: number;
 }

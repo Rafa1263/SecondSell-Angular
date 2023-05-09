@@ -31,6 +31,7 @@ export class UploadComponent {
       if (this.authService.getUserByCookie()) {
         this.authService.user.subscribe((us: User) => {
           this.user = us
+          this.loaded = true
         })
       }
       else {
@@ -40,6 +41,8 @@ export class UploadComponent {
           }
           else {
             this.user = us
+            this.loaded = true
+
           }
         })
 
@@ -63,10 +66,12 @@ export class UploadComponent {
           description: productDescription.value,
           state: selectedValue!,
           photo: this.imageString,
-          price: parseFloat(productPrice.value),
+          price: parseFloat(productPrice.value).toFixed(2),
           categoryId: categoryId,
-          userId: this.user.id!
+          userId: this.user.id!,
+          likes: 0
         };
+        console.log(product)
         this.productService.postProduct(product).subscribe(() => {
           console.log("Posted")
         })

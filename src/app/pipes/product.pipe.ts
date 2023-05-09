@@ -3,7 +3,7 @@ import { Product } from 'src/app/models/product.model'
 
 
 @Pipe({
-  name: 'a',
+  name: 'pagination',
 })
 export class PaginationPipe implements PipeTransform {
   transform(products: Product[], itemsPerPage: number): Product[] {
