@@ -16,6 +16,8 @@ import { UploadPage } from 'src/app/views/upload/upload.component';
 import { TopPipeModule } from 'src/app/pipes/top-pipe.module';
 import { ProductComponent } from 'src/app/views/product/product.component';
 import { CategorySizePipeModule } from 'src/app/pipes/categorySize-pipe.module';
+import { TimePipeModule } from 'src/app/pipes/time-pipe.module';
+import { DescLenPipeeModule } from 'src/app/pipes/desc-pipe.module';
 
 @NgModule({
   declarations: [
@@ -36,6 +38,8 @@ import { CategorySizePipeModule } from 'src/app/pipes/categorySize-pipe.module';
     PaginationPipeModule,
     TopPipeModule,
     CategorySizePipeModule,
+    TimePipeModule,
+    DescLenPipeeModule
 
 
   ],

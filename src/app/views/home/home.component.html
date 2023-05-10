@@ -56,8 +56,8 @@
       <div (click)="productRedirect(product!.id!)">
         <div></div>
         <span>{{product.name}}</span>
-        <span>{{product.description}}</span>
-        <span>Hace {{getTimeDifference(product.created_at)}}</span>
+        <span>{{product.description | desclen}}</span>
+        <span>Hace {{product.created_at |timedif}}</span>
         <span>{{product.price}} €</span>
         <span>🤍 {{product.likes}}</span>
       </div>
@@ -75,8 +75,8 @@
       <div (click)="productRedirect(product!.id!)">
         <div></div>
         <span>{{product.name}}</span>
-        <span>{{product.description}}</span>
-        <span>Hace {{getTimeDifference(product.created_at)}}</span>
+        <span>{{product.description | desclen}}</span>
+        <span>Hace {{product.created_at |timedif}}</span>
         <span>{{product.price}} €</span>
         <span>🤍 {{product.likes}}</span>
       </div>

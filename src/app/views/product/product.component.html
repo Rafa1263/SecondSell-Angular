@@ -61,7 +61,7 @@
     </div>
     <div class="content-pinf">
       <div class="pinfo">
-        <p>{{user.name}}</p>
+        <p>{{user.username}}</p>
         <div class="seg">
           <div class="prate">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
@@ -93,6 +93,8 @@
           </div>
 
         </div>
+        <div style="opacity:0.7">Activo hace 5 minutos</div>
+
       </div>
     </div>
     <svg class="showUser" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -102,13 +104,60 @@
     </svg>
 
   </div>
+
 </section> <!--FOOTER-->
 <section>
   <div class="state">
     <p class="descSub">Estado : </p>
-    <span>{{product.state | uppercase}}</span>
+    <span>BAD</span>
+    <span>MID</span>
+    <span style="background-color: green;">GOOD</span>
+    <span>NEW</span>
+  </div>
+
+  <div>
+    <p class="descSub">Descripción</p>
+    <p class="pdesc">{{product.description}}</p>
+  </div>
+  <div class="timestamps">
+    <p>Publicado hace {{product.created_at | timedif}}</p>
+    <p>Actualizado hace {{product.updated_at |timedif}}</p>
   </div>
 </section>
+<section>
+  <div class="titleSim">
+    <p class="descSub">Articulos similares</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16">s<path
+        d="M8 13.3c2.9 0 5.3-2.4 5.3-5.3 0-1.4-.6-2.8-1.6-3.8S9.4 2.7 8 2.7C5.1 2.7 2.7 5.1 2.7 8s2.4 5.3 5.3 5.3zm0 1.4A6.7 6.7 0 0 1 8 1.3c1.8 0 3.5.7 4.7 2s2 2.9 2 4.7c0 3.7-3 6.7-6.7 6.7zm-.7-7.4c0-.3.3-.6.7-.6s.7.3.7.6v3.3c0 .4-.3.7-.7.7s-.7-.3-.7-.6V7.3zM8 6c.4 0 .7-.3.7-.7s-.3-.6-.7-.6-.7.3-.7.6.3.7.7.7z">
+      </path></svg>
+  </div>
+
+  <section>
+    <div *ngFor=" let product of products  let index = index;">
+      <div (click)="productRedirect(product!.id!)">
+        <div></div>
+        <span>{{product.name}}</span>
+        <span>{{product.description | desclen}}</span>
+        <span>Hace {{product.created_at |timedif}}</span>
+        <span>{{product.price}} €</span>
+        <span>🤍 {{product.likes}}</span>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section>
+  <p class="descSub">¿Hay algo que debamos revisar?</p>
+  <div>
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" fill="red" clip-rule="evenodd"
+        d="M8 2c-1.613 0-2.74.27-3.496.572a4.66 4.66 0 0 0-.856.44c-.061.042-.115.08-.16.115a1 1 0 0 0-.488.86v17.012a1 1 0 1 0 2 0v-4.45c.07-.034.151-.072.246-.11.495-.198 1.367-.429 2.754-.429 1.28 0 2.36.422 3.629.93l.055.022c1.22.488 2.623 1.05 4.316 1.05 1.164 0 2.076-.14 2.779-.333C20.427 17.228 21 15.631 21 14.352V5.934c0-.855-.602-1.452-1.083-1.755-.497-.314-1.209-.54-1.894-.382-.496.115-1.16.204-2.023.204-1.28 0-2.36-.421-3.629-.929l-.055-.022C11.096 2.562 9.693 2 8 2Zm0 12.009c-1.292 0-2.272.173-3 .397V4.54c.07-.034.151-.072.246-.11.495-.198 1.367-.429 2.754-.429 1.28 0 2.36.422 3.629.93l.055.022c1.22.488 2.623 1.05 4.316 1.05 1.002 0 1.817-.104 2.473-.256h-.001a.427.427 0 0 0 .085-.025c.207-.079.443.054.443.275v8.355c0 .845-.093 1.217-.75 1.397-.514.14-1.247.261-2.25.261-1.28 0-2.36-.421-3.629-.929l-.055-.022c-1.22-.488-2.623-1.05-4.316-1.05Z">
+      </path>
+    </svg>
+    <p>Informar sobre el anuncio</p>
+  </div>
+</section>
+
 <div class="fixed-bar">
   <div>
     <div>
