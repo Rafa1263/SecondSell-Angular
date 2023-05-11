@@ -17,8 +17,8 @@ export class CategoryService {
   }
 
   // FUNCIÓN PARA HACER POST DE UN CategoryO
-  public postCategory(user: Category): Observable<Category> {
-    return this.http.post<Category>(`${this.CONFIG_URL}/categories`, user)
+  public postCategory(category: Category): Observable<Category> {
+    return this.http.post<Category>(`${this.CONFIG_URL}/categories`, category)
   }
 
   // FUNCIÓN PARA OBTENER LOS CategoryOS Y ALMACENARLOS EN LA VAR PRIVADA

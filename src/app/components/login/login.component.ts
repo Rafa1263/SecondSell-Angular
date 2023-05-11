@@ -19,8 +19,7 @@ export class LoginComponent implements OnInit {
   ngOnInit(): void {
     this.authservice.user.subscribe((us: User) => {
 
-      if (us != {} as User) {
-        console.log(us)
+      if (us.username) {
         this.router.navigate(['/upload'])
       }
     })
