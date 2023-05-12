@@ -108,22 +108,24 @@ header {
     border-radius: 10px;
 
     .chat-img-eng {
-      z-index: 50;
       width: 60px;
       height: 60px;
       border: 1px solid black;
       border-radius: 10px;
-      overflow: hidden;
       padding: 0.2rem;
 
       .p-img-chat {
-        width: 100%;
+        position: absolute;
+        width: 60px;
+
+
       }
 
       div {
+        position: absolute;
         border-radius: 100%;
-        margin-top: 65%;
-        margin-left: 65%;
+        margin-top: 45px;
+        margin-left: 45px;
         background-color: black;
         width: 25px;
         height: 25px;
