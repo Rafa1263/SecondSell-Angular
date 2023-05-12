@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule, Routes } from '@angular/router';
+import { ChatComponent } from 'src/app/views/chat/chat.component';
 import { HomeComponent } from 'src/app/views/home/home.component';
 import { LoginPageComponent } from 'src/app/views/login/login.component';
 import { ProductComponent } from 'src/app/views/product/product.component';
@@ -17,6 +18,10 @@ const routes: Routes = [{
 {
   path: 'product/:id',
   component: ProductComponent
+},
+{
+  path: 'chat',
+  component: ChatComponent
 },
 {
   path: '**',

@@ -11,23 +11,25 @@ import { ChatService } from 'src/app/services/chat.service';
 import { ProductService } from 'src/app/services/products.service';
 
 @Component({
-  selector: 'app-product',
-  templateUrl: './product.component.html',
-  styleUrls: ['./product.component.scss']
+  selector: 'app-chat',
+  templateUrl: './chat.component.html',
+  styleUrls: ['./chat.component.scss']
 })
-export class ProductComponent implements OnInit {
+export class ChatComponent implements OnInit {
   public product: Product = {} as Product
   public user: User = {} as User
+  public users: User[] = []
   public seller: User = {} as User
   public products: Product[] = []
   public chatList: Chat[] = []
-  public prodid!: string
+  public ownChats: Chat[] = []
+  public loaded = false
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
   ngOnInit() {
     this.authService.getUsers().subscribe(() => {
-
+      this.users = this.authService.usuarios
       if (this.authService.getUserByCookie()) {
         this.authService.user.subscribe((us: User) => {
           this.user = us
@@ -48,33 +50,19 @@ export class ProductComponent implements OnInit {
     })
 
     this.productService.getProducts().subscribe(() => {
-
-      this.prodid = this.route.snapshot.paramMap.get('id')!;
-
-      if (this.prodid != undefined && parseInt(this.prodid) && this.prodid != null) {
-        let tempID: number = parseInt(this.prodid)
-        let temp = this.productService.productList.find(product => product.id === tempID);
-        if (temp != undefined) {
-          this.product = temp
-          this.authService.getUser(this.product.userId).subscribe((us: User) => {
-            this.seller = us
-            this.products = this.productService.productList
-            this.chatService.getChats().subscribe(() => {
-              this.chatList = this.chatService.chatList
-            })
-          })
-        }
-      }
+      this.products = this.productService.productList
+      this.chatService.getChats().subscribe(() => {
+        this.chatList = this.chatService.chatList
+        this.ownChats = this.chatList.filter((chat: Chat) => chat.emit === this.user.id);
+        this.loaded = true
+      })
     })
-
-
   }
   public showMessageDirect() {
     document.getElementById("chat")!.classList.remove("displayed")
   }
   public hideMessageDirect() {
     document.getElementById("chat")!.classList.add("displayed")
-
   }
   public sendMessage() {
     const chat = this.chatList.find(
@@ -90,41 +78,14 @@ export class ProductComponent implements OnInit {
       created_at: new Date()
     }
     if (created) {
-
-
       chat!.conversation.push(message)
       this.chatService.putChat(chat!).subscribe(() => {
       })
     }
-    else {
-      let chat: Chat = {
-        emit: this.user!.id!,
-        recept: this.seller!.id!,
-        conversation: [message],
-        productID: parseInt(this.prodid),
-      }
-      this.chatService.postChat(chat).subscribe(() => { })
-    }
-
   }
-  public productRedirect(productId: number) {
-    const proute = `/product/${productId}`
-    this.router.navigate([proute])
 
-
-    this.prodid = String(productId);
-    if (this.prodid != undefined && parseInt(this.prodid) && this.prodid != null) {
-      let tempID: number = parseInt(this.prodid)
-      let temp = this.productService.productList.find(product => product.id === tempID);
-      if (temp != undefined) {
-        this.product = temp
-        this.authService.getUser(this.product.userId).subscribe((us: User) => {
-          this.seller = us
-          this.products = this.productService.productList
-
-        })
-      }
-    }
-
-  }
 }
+
+
+
+

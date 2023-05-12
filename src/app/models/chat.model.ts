@@ -8,6 +8,7 @@ export interface Message {
 export interface Chat {
   id?: number;
   emit: number;
+  productID: number;
   recept: number;
   conversation: Message[]
 

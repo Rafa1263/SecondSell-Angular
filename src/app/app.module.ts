@@ -18,6 +18,10 @@ import { ProductComponent } from 'src/app/views/product/product.component';
 import { CategorySizePipeModule } from 'src/app/pipes/categorySize-pipe.module';
 import { TimePipeModule } from 'src/app/pipes/time-pipe.module';
 import { DescLenPipeeModule } from 'src/app/pipes/desc-pipe.module';
+import { getUserPipeModule } from 'src/app/pipes/getuser-pipe.module';
+import { CommonModule } from '@angular/common';
+import { ChatComponent } from 'src/app/views/chat/chat.component';
+import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +33,9 @@ import { DescLenPipeeModule } from 'src/app/pipes/desc-pipe.module';
     UploadPage,
     HomeComponent,
     HeaderComponent,
-    ProductComponent
+    ProductComponent,
+    ChatComponent
+
   ],
   imports: [
     BrowserModule,
@@ -39,7 +45,11 @@ import { DescLenPipeeModule } from 'src/app/pipes/desc-pipe.module';
     TopPipeModule,
     CategorySizePipeModule,
     TimePipeModule,
-    DescLenPipeeModule
+    DescLenPipeeModule,
+    getUserPipeModule,
+    getProductPipeModule
+
+
 
 
   ],
