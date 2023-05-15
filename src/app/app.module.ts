@@ -22,6 +22,7 @@ import { getUserPipeModule } from 'src/app/pipes/getuser-pipe.module';
 import { CommonModule } from '@angular/common';
 import { ChatComponent } from 'src/app/views/chat/chat.component';
 import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
+import { SingleChatComponent } from './views/single-chat/single-chat.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
     HomeComponent,
     HeaderComponent,
     ProductComponent,
-    ChatComponent
+    ChatComponent,
+    SingleChatComponent
 
   ],
   imports: [

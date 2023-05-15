@@ -6,8 +6,15 @@ import { HomeComponent } from 'src/app/views/home/home.component';
 import { LoginPageComponent } from 'src/app/views/login/login.component';
 import { ProductComponent } from 'src/app/views/product/product.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
+import { SingleChatComponent } from './views/single-chat/single-chat.component';
 
-const routes: Routes = [{
+const routes: Routes = [
+  {
+    path: "",
+    component: HomeComponent
+
+  },
+  {
   path: 'upload',
   component: UploadPage
 },
@@ -24,8 +31,12 @@ const routes: Routes = [{
   component: ChatComponent
 },
 {
+  path: 'chat/:id',
+  component: SingleChatComponent
+},
+{
   path: '**',
-  component: HomeComponent
+  redirectTo:"",
 }
 ];
 

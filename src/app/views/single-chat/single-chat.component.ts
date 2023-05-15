@@ -11,19 +11,20 @@ import { ChatService } from 'src/app/services/chat.service';
 import { ProductService } from 'src/app/services/products.service';
 
 @Component({
-  selector: 'app-chat',
-  templateUrl: './chat.component.html',
-  styleUrls: ['./chat.component.scss']
+  selector: 'app-single-chat',
+  templateUrl: './single-chat.component.html',
+  styleUrls: ['./single-chat.component.scss']
 })
-export class ChatComponent implements OnInit {
+export class SingleChatComponent implements OnInit {
   public product: Product = {} as Product
   public user: User = {} as User
   public users: User[] = []
-  public seller: User = {} as User
+  public direct: User = {} as User
   public products: Product[] = []
   public chatList: Chat[] = []
-  public ownChats: Chat[] = []
+  public chat: Chat = {} as Chat
   public loaded = false
+  public chatId: string = ''
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
@@ -52,8 +53,20 @@ export class ChatComponent implements OnInit {
     this.productService.getProducts().subscribe(() => {
       this.products = this.productService.productList
       this.chatService.getChats().subscribe(() => {
+        this.chatId = this.route.snapshot.paramMap.get('id')!;
         this.chatList = this.chatService.chatList
-        this.ownChats = this.chatList.filter((chat: Chat) => chat.emit === this.user.id || chat.recept === this.user.id);
+        this.chat = this.chatList.find((chat: Chat) => chat.id === parseInt(this.chatId) && chat.emit === this.user.id || chat.recept === this.user.id)!;
+        if ((this.chat == undefined)) {
+          this.router.navigate(['/chat'])
+        }
+        this.product = this.products.find((prodcut: Product) => prodcut.id == this.chat.productID)!
+        if (this.user.id === this.chat.recept) {
+          this.direct = this.users.find((user: User) => user.id == this.chat.emit)!
+
+        }
+        else {
+          this.direct = this.users.find((user: User) => user.id == this.chat.recept)!
+        }
         this.loaded = true
       })
     })
@@ -63,12 +76,12 @@ export class ChatComponent implements OnInit {
     this.router.navigate([proute])
   }
   public sendMessage() {
-    const chat = this.chatList.find(
-      (chat) => chat.emit === this.user.id && chat.recept === this.seller.id
-    );
-    const messageInput = document.getElementById("chat-msg") as HTMLTextAreaElement | null;
 
-    const created = Boolean(chat);
+    const messageInput = document.getElementById("chat-msg") as HTMLInputElement | null;
+    if (messageInput!.value == "") {
+      return
+    }
+    const created = Boolean(this.chat);
     let message: Message = {
       emit: this.user!.id!,
       message: messageInput!.value,
@@ -76,8 +89,8 @@ export class ChatComponent implements OnInit {
       created_at: new Date()
     }
     if (created) {
-      chat!.conversation.push(message)
-      this.chatService.putChat(chat!).subscribe(() => {
+      this.chat!.conversation.push(message)
+      this.chatService.putChat(this.chat!).subscribe(() => {
       })
     }
   }

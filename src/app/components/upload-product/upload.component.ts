@@ -69,7 +69,6 @@ export class UploadComponent {
           price: parseFloat(productPrice.value).toFixed(2),
           categoryId: categoryId,
           userId: this.user.id!,
-          likes: 0,
           active: true
 
         };
@@ -83,8 +82,7 @@ export class UploadComponent {
     }
   }
   public updatePhoto(event: Event): void {
-    // @ts-ignore
-    const file = (event.target as HTMLInputElement).files[0];
+    const file = (event.target as HTMLInputElement)!.files![0];
 
     if (!file) {
       return;

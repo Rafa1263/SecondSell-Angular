@@ -7,7 +7,7 @@ import { Product } from 'src/app/models/product.model'
 })
 export class TopPipe implements PipeTransform {
   transform(products: Product[]): Product[] {
-    const sortedProducts = products.sort((a, b) => b.likes - a.likes);
+    const sortedProducts = products.sort((a, b) => b.id! - a.id!);
     return sortedProducts.slice(0, 10);
   }
 
