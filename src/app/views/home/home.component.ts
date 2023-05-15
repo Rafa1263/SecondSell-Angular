@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
   public pagination: Pagination = {} as Pagination
 
   private readonly categorySize = 8
-  private readonly categoryBlank = [0, 1, 2, 3]
+  private categoryBlank: number[] = []
 
   constructor(private router: Router, private productService: ProductService, private categoryService: CategoryService) {
 
@@ -28,10 +28,18 @@ export class HomeComponent implements OnInit {
     })
     this.categoryService.getCategories().subscribe(() => {
       this.categories = this.categoryService.categoryList
+
+      for (let i = 0; i < this.categories.length - this.pagination.categorySize; i++) {
+        if (i == this.categorySize / 2) {
+          i = this.categories.length
+        }
+        this.categoryBlank.push(i)
+      }
+      this.pagination.categroyBlank = this.categoryBlank
     })
     this.pagination.pageSize = 8
     this.pagination.categorySize = 8
-    this.pagination.categroyBlank = [0, 1, 2, 3]
+
     this.pagination.categoryDisplay = false
   }
   public showCategories(): void {
