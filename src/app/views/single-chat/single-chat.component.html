@@ -17,6 +17,8 @@
   <section class="item-inf">
     <div class="item-img">
       <img *ngIf="product.photo != 'none'" [src]="product.photo">
+      <img *ngIf="product.photo == 'none'"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHaOuVzOscd3MyzXqu_XZGl2T0GuiG989kTWgniDye5Q&s">
     </div>
     <div class="item-desc">
       <p class="item-name">{{product.name}}</p>
@@ -39,8 +41,6 @@
         <svg width='24' height='24' viewBox='0 0 24 24' xmlns='http://www.w3.org/2000/svg'
           xmlns:xlink='http://www.w3.org/1999/xlink'>
           <rect width='24' height='24' stroke='none' fill='#000000' opacity='0' />
-
-
           <g transform="matrix(0.43 0 0 0.43 12 12)">
             <path
               style="stroke: none; stroke-width: 1; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(0,0,0); fill-rule: nonzero; opacity: 1;"

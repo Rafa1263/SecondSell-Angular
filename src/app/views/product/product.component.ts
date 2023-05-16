@@ -22,6 +22,7 @@ export class ProductComponent implements OnInit {
   public products: Product[] = []
   public chatList: Chat[] = []
   public prodid!: string
+  public canSend = true
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
@@ -69,6 +70,13 @@ export class ProductComponent implements OnInit {
 
 
   }
+  public showpannel() {
+    document.getElementById("pannel")!.classList.remove("displayed")
+  }
+  public hidepannel() {
+    document.getElementById("pannel")!.classList.add("displayed")
+
+  }
   public showMessageDirect() {
     document.getElementById("chat")!.classList.remove("displayed")
   }
@@ -78,7 +86,7 @@ export class ProductComponent implements OnInit {
   }
   public sendMessage() {
     const chat = this.chatList.find(
-      (chat) => chat.emit === this.user.id && chat.recept === this.seller.id
+      (chat) => chat.emit === this.user.id && chat.recept === this.seller.id && chat.productID === this.product.id
     );
     const messageInput = document.getElementById("chat-msg") as HTMLTextAreaElement | null;
 
@@ -89,21 +97,44 @@ export class ProductComponent implements OnInit {
       seen: false,
       created_at: new Date()
     }
-    if (created) {
+    if (this.canSend) {
+      console.log(this.canSend)
 
+      if (created) {
 
-      chat!.conversation.push(message)
-      this.chatService.putChat(chat!).subscribe(() => {
-      })
-    }
-    else {
-      let chat: Chat = {
-        emit: this.user!.id!,
-        recept: this.seller!.id!,
-        conversation: [message],
-        productID: parseInt(this.prodid),
+        this.canSend = false
+        chat!.conversation.push(message)
+        this.chatService.putChat(chat!).subscribe(() => {
+
+          this.hideMessageDirect()
+          this.showpannel()
+          this.chatService.getChats().subscribe(() => {
+            this.chatList = this.chatService.chatList
+            this.canSend = true
+
+          })
+        })
       }
-      this.chatService.postChat(chat).subscribe(() => { })
+      else {
+        this.canSend = false
+
+        let chat: Chat = {
+          emit: this.user!.id!,
+          recept: this.seller!.id!,
+          conversation: [message],
+          productID: parseInt(this.prodid),
+        }
+        this.chatService.postChat(chat).subscribe(() => {
+          this.chatService.getChats().subscribe(() => {
+            this.chatList = this.chatService.chatList
+            this.canSend = true
+
+          })
+          this.hideMessageDirect()
+          this.showpannel()
+
+        })
+      }
     }
 
   }

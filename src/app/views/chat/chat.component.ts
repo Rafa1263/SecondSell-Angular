@@ -78,8 +78,10 @@ export class ChatComponent implements OnInit {
     if (created) {
       chat!.conversation.push(message)
       this.chatService.putChat(chat!).subscribe(() => {
+
       })
     }
+
   }
 
 }

@@ -34,5 +34,9 @@ export class ChatService {
         this.chatList = chats
       })))
   }
+  public getChat(id: number): Observable<Chat> {
+    return this.http.get<Chat>(`${this.CONFIG_URL}/chats/${id}`)
 
+
+  }
 }

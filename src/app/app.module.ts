@@ -23,6 +23,7 @@ import { CommonModule } from '@angular/common';
 import { ChatComponent } from 'src/app/views/chat/chat.component';
 import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
+import { SeenPipeModule } from 'src/app/pipes/seen-pipe.module';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { SingleChatComponent } from './views/single-chat/single-chat.component';
     HeaderComponent,
     ProductComponent,
     ChatComponent,
-    SingleChatComponent
+    SingleChatComponent,
+
 
   ],
   imports: [
@@ -49,7 +51,8 @@ import { SingleChatComponent } from './views/single-chat/single-chat.component';
     TimePipeModule,
     DescLenPipeeModule,
     getUserPipeModule,
-    getProductPipeModule
+    getProductPipeModule,
+    SeenPipeModule
 
 
 

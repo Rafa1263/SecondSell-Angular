@@ -7,7 +7,7 @@ import { Category } from 'src/app/models/category.model';
 })
 export class CategorySizePipe implements PipeTransform {
   transform(categories: Category[], itemsPerPage: number): Category[] {
-    return categories.slice(0, itemsPerPage);
+    return categories.slice(0, itemsPerPage)
 
   }
 }

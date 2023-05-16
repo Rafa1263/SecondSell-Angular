@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { create } from 'domain';
 import { Chat, Message } from 'src/app/models/chat.model';
-
+import { interval, Subscription } from 'rxjs';
+import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/models/product.model';
 import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
@@ -25,6 +26,9 @@ export class SingleChatComponent implements OnInit {
   public chat: Chat = {} as Chat
   public loaded = false
   public chatId: string = ''
+  public shouldget = true
+  subscription: Subscription | undefined;
+
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
@@ -67,7 +71,16 @@ export class SingleChatComponent implements OnInit {
         else {
           this.direct = this.users.find((user: User) => user.id == this.chat.recept)!
         }
-        this.loaded = true
+        this.chat.conversation.forEach((msg: Message) => {
+          if (msg.emit != this.user.id) {
+            msg.seen = true
+          }
+        })
+        this.chatService.putChat(this.chat).subscribe(() => {
+          this.loaded = true
+          this.suscribirPeticion()
+
+        })
       })
     })
   }
@@ -89,14 +102,40 @@ export class SingleChatComponent implements OnInit {
       created_at: new Date()
     }
     if (created) {
-      this.chat!.conversation.push(message)
-      this.chatService.putChat(this.chat!).subscribe(() => {
+      this.chatService.getChat(this.chat.id!).subscribe((chat: Chat) => {
+        this.chat = chat
+        this.chat!.conversation.push(message)
+        this.shouldget = false
+        this.chatService.putChat(this.chat!).subscribe(() => {
+          this.shouldget = true
+        })
       })
+
+    }
+  }
+  suscribirPeticion(): void {
+    this.subscription = interval(600).subscribe(() => {
+      this.chatService.getChat(this.chat.id!).subscribe((chat: Chat) => {
+        if (this.shouldget) {
+          this.chat = chat;
+          this.chat.conversation.forEach((msg: Message) => {
+            if (msg.emit != this.user.id) {
+              msg.seen = true
+            }
+          })
+          this.chatService.putChat(this.chat).subscribe(() => { })
+        }
+      });
+    });
+  }
+
+  cancelarSuscripcion(): void {
+    if (this.subscription) {
+      this.subscription.unsubscribe();
     }
   }
 
+  ngOnDestroy(): void {
+    this.cancelarSuscripcion();
+  }
 }
-
-
-
-
