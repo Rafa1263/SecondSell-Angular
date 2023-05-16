@@ -7,6 +7,7 @@ import { LoginPageComponent } from 'src/app/views/login/login.component';
 import { ProductComponent } from 'src/app/views/product/product.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
+import { ProfileComponent } from 'src/app/views/profile/profile.component';
 
 const routes: Routes = [
   {
@@ -15,29 +16,33 @@ const routes: Routes = [
 
   },
   {
-  path: 'upload',
-  component: UploadPage
-},
-{
-  path: 'login',
-  component: LoginPageComponent
-},
-{
-  path: 'product/:id',
-  component: ProductComponent
-},
-{
-  path: 'chat',
-  component: ChatComponent
-},
-{
-  path: 'chat/:id',
-  component: SingleChatComponent
-},
-{
-  path: '**',
-  redirectTo:"",
-}
+    path: 'upload',
+    component: UploadPage
+  },
+  {
+    path: 'login',
+    component: LoginPageComponent
+  },
+  {
+    path: 'profile',
+    component: ProfileComponent
+  },
+  {
+    path: 'product/:id',
+    component: ProductComponent
+  },
+  {
+    path: 'chat',
+    component: ChatComponent
+  },
+  {
+    path: 'chat/:id',
+    component: SingleChatComponent
+  },
+  {
+    path: '**',
+    redirectTo: "",
+  }
 ];
 
 @NgModule({
