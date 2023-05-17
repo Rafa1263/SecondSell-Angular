@@ -70,6 +70,19 @@ export class ProductComponent implements OnInit {
 
 
   }
+  public ensureUser() {
+    if (this.user.id
+      == this.seller.id) {
+      document.getElementById("error-chat")!.innerHTML = "Error sending the message"
+      return false
+    }
+    else {
+      document.getElementById("error-chat")!.innerHTML = "Message sent successfully"
+      return true
+
+    }
+
+  }
   public showpannel() {
     document.getElementById("pannel")!.classList.remove("displayed")
   }
@@ -101,39 +114,48 @@ export class ProductComponent implements OnInit {
       console.log(this.canSend)
 
       if (created) {
+        if (this.ensureUser()) {
+          this.canSend = false
+          chat!.conversation.push(message)
+          this.chatService.putChat(chat!).subscribe(() => {
 
-        this.canSend = false
-        chat!.conversation.push(message)
-        this.chatService.putChat(chat!).subscribe(() => {
+            this.hideMessageDirect()
+            this.showpannel()
+            this.chatService.getChats().subscribe(() => {
+              this.chatList = this.chatService.chatList
+              this.canSend = true
 
-          this.hideMessageDirect()
-          this.showpannel()
-          this.chatService.getChats().subscribe(() => {
-            this.chatList = this.chatService.chatList
-            this.canSend = true
+            })
 
           })
-        })
+        }
+        this.hideMessageDirect()
+        this.showpannel()
+
       }
       else {
-        this.canSend = false
+        if (this.ensureUser()) {
+          this.canSend = false
 
-        let chat: Chat = {
-          emit: this.user!.id!,
-          recept: this.seller!.id!,
-          conversation: [message],
-          productID: parseInt(this.prodid),
-        }
-        this.chatService.postChat(chat).subscribe(() => {
-          this.chatService.getChats().subscribe(() => {
-            this.chatList = this.chatService.chatList
-            this.canSend = true
+          let chat: Chat = {
+            emit: this.user!.id!,
+            recept: this.seller!.id!,
+            conversation: [message],
+            productID: parseInt(this.prodid),
+          }
+          this.chatService.postChat(chat).subscribe(() => {
+            this.chatService.getChats().subscribe(() => {
+              this.chatList = this.chatService.chatList
+              this.canSend = true
+
+            })
+            this.hideMessageDirect()
+            this.showpannel()
 
           })
-          this.hideMessageDirect()
-          this.showpannel()
-
-        })
+        }
+        this.hideMessageDirect()
+        this.showpannel()
       }
     }
 
@@ -158,4 +180,5 @@ export class ProductComponent implements OnInit {
     }
 
   }
+
 }

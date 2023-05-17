@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
     this.authservice.user.subscribe((us: User) => {
 
       if (us.username) {
-        this.router.navigate(['/upload'])
+        this.router.navigate(['/'])
       }
     })
     this.authservice.getUsers().subscribe(() => {
@@ -73,7 +73,7 @@ export class LoginComponent implements OnInit {
         // ACTULIZAMOS LOS CAMBIOS AL USER
         this.authservice.user.next(this.user)
 
-        this.router.navigate(['/upload']);
+        this.router.navigate(['/']);
 
 
       }
