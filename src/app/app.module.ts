@@ -25,6 +25,8 @@ import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
 import { SeenPipeModule } from 'src/app/pipes/seen-pipe.module';
 import { RegisterComponent } from 'src/app/views/register/register.component';
+import { SliderComponent } from 'src/app/components/slider/slider.component';
+import { UserProfileComponent } from 'src/app/views/user-profile/user-profile.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +41,9 @@ import { RegisterComponent } from 'src/app/views/register/register.component';
     HeaderComponent,
     ChatComponent,
     SingleChatComponent,
-    RegisterComponent
+    RegisterComponent,
+    SliderComponent,
+    UserProfileComponent
 
 
   ],

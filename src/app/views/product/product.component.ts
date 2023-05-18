@@ -50,23 +50,25 @@ export class ProductComponent implements OnInit {
 
     this.productService.getProducts().subscribe(() => {
 
-      this.prodid = this.route.snapshot.paramMap.get('id')!;
+      this.route.params.subscribe(params => {
+        this.prodid = params['id'];
 
-      if (this.prodid != undefined && parseInt(this.prodid) && this.prodid != null) {
-        let tempID: number = parseInt(this.prodid)
-        let temp = this.productService.productList.find(product => product.id === tempID);
-        if (temp != undefined) {
-          this.product = temp
-          this.authService.getUser(this.product.userId).subscribe((us: User) => {
-            this.seller = us
-            this.products = this.productService.productList
-            this.chatService.getChats().subscribe(() => {
-              this.chatList = this.chatService.chatList
+        if (this.prodid != undefined && parseInt(this.prodid) && this.prodid != null) {
+          let tempID: number = parseInt(this.prodid)
+          let temp = this.productService.productList.find(product => product.id === tempID);
+          if (temp != undefined) {
+            this.product = temp
+            this.authService.getUser(this.product.userId).subscribe((us: User) => {
+              this.seller = us
+              this.products = this.productService.productList
+              this.chatService.getChats().subscribe(() => {
+                this.chatList = this.chatService.chatList
+              })
             })
-          })
+          }
         }
-      }
-    })
+      })
+    });
 
 
   }
@@ -160,25 +162,6 @@ export class ProductComponent implements OnInit {
     }
 
   }
-  public productRedirect(productId: number) {
-    const proute = `/product/${productId}`
-    this.router.navigate([proute])
 
-
-    this.prodid = String(productId);
-    if (this.prodid != undefined && parseInt(this.prodid) && this.prodid != null) {
-      let tempID: number = parseInt(this.prodid)
-      let temp = this.productService.productList.find(product => product.id === tempID);
-      if (temp != undefined) {
-        this.product = temp
-        this.authService.getUser(this.product.userId).subscribe((us: User) => {
-          this.seller = us
-          this.products = this.productService.productList
-
-        })
-      }
-    }
-
-  }
 
 }
