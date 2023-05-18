@@ -163,5 +163,8 @@ export class ProductComponent implements OnInit {
 
   }
 
+  public userRedirect(userId: number) {
+    this.router.navigate([`/user/${userId}`])
 
+  }
 }
