@@ -108,11 +108,19 @@ header {
 }
 
 nav {
+  position: absolute;
   height: 0px;
   overflow: hidden;
-  margin: 5%;
   transition: all;
   transition-duration: 100ms;
+  background-color: white;
+  width: 100%;
+  opacity: 100%;
+  z-index: 100;
+
+  .nav-eng {
+    margin: 5%;
+  }
 
   .n-button-v {
     font-size: 1.2rem;

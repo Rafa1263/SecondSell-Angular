@@ -35,7 +35,7 @@ export class HeaderComponent implements OnInit {
       document.getElementById("line3")!.style.marginTop = "-2px"
 
       // NAV
-      document.getElementById("nav")!.style.height = "100%"
+      document.getElementById("nav")!.style.height = "max-content"
     }
 
   }
