@@ -19,7 +19,7 @@ import { ProductService } from 'src/app/services/products.service';
 export class UserProfileComponent implements OnInit {
   public product: Product = {} as Product
   public user: User = {} as User
-  public selection = 3
+  public selection = 2
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
