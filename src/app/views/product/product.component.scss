@@ -17,88 +17,7 @@ $recent-card-height: 3;
 
 }
 
-// HEADER
-header {
-  padding: 0.8rem;
-  display: flex;
-  flex-direction: column;
-
-
-  section {
-    display: flex;
-    justify-content: space-around;
-
-    &:nth-of-type(1) div:nth-child(2) {
-      font-size: 1rem;
-      opacity: 70%;
-      padding: 0.4rem;
-    }
-
-    div {
-      font-size: 1.3rem;
-      text-align: center;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-width: 8rem;
-      padding: 0.2rem;
-      border: 1px solid black;
-      border-radius: 5px;
-    }
-  }
-
-  section+div {
-    align-self: center;
-    border: 1px solid black;
-    padding: 0.5rem;
-    max-height: 2.2rem;
-    width: 90%;
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: 10px 30px 1fr;
-    border-radius: 5px;
-    opacity: 40%;
-
-    input {
-      align-self: center;
-      grid-column-start: 1;
-      grid-column-end: -1;
-      grid-row-start: 1;
-      border: none;
-      width: 100%;
-      outline: none;
-      z-index: 50;
-      background-color: transparent;
-
-      &:focus {
-        border: none;
-      }
-
-      &:active {
-        border: none;
-      }
-
-    }
-
-    img {
-      grid-column-start: 2;
-      justify-self: start;
-      grid-row-start: 1;
-      width: 20px;
-    }
-
-    span {
-      justify-self: start;
-      grid-column-start: 3;
-      grid-column-end: -1;
-      grid-row-start: 1;
-      width: 100%;
-    }
-  }
-}
-
-//FIRST PART
-header+section {
+.f-h {
   margin-left: 7%;
   margin-right: 7%;
   margin-top: 1rem;
@@ -125,7 +44,7 @@ header+section {
 }
 
 //SECOND PART
-header+section+section {
+.f-h+section {
   margin: 0;
   display: flex;
   flex-direction: column;
@@ -221,7 +140,7 @@ header+section+section {
 }
 
 //THIRD PART
-header+section+section+section {
+.f-h+section+section {
   display: flex;
   flex-direction: column;
   margin: 5%;
@@ -300,7 +219,7 @@ header+section+section+section {
 
 }
 
-header+section+section+section+section {
+.f-h+section+section+section {
   margin: 5%;
 
   .state {
@@ -333,7 +252,7 @@ header+section+section+section+section {
 }
 
 
-header+section+section+section+section+section {
+.f-h+section+section+section+section {
   margin: 5%;
   margin-top: 4rem;
   overflow: hidden;
@@ -422,7 +341,7 @@ header+section+section+section+section+section {
 
 }
 
-header+section+section+section+section+section+section {
+.f-h+section+section+section+section+section {
   margin: 5%;
   display: flex;
   flex-direction: column;

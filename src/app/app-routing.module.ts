@@ -8,6 +8,7 @@ import { ProductComponent } from 'src/app/views/product/product.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
 import { ProfileComponent } from 'src/app/views/profile/profile.component';
+import { RegisterComponent } from 'src/app/views/register/register.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,10 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginPageComponent
+  },
+  {
+    path: 'register',
+    component: RegisterComponent
   },
   {
     path: 'profile',

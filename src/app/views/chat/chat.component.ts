@@ -58,6 +58,19 @@ export class ChatComponent implements OnInit {
       })
     })
   }
+
+  public getuserChats() {
+    this.chatService.getChats().subscribe(() => {
+      this.chatList = this.chatService.chatList
+      this.ownChats = this.chatList.filter((chat: Chat) => chat.emit === this.user.id || chat.recept === this.user.id);
+    })
+  }
+  public getUserBuyersChats() {
+    this.chatService.getChats().subscribe(() => {
+      this.chatList = this.chatService.chatList
+      this.ownChats = this.chatList.filter((chat: Chat) => chat.emit != this.user.id && chat.recept === this.user.id);
+    })
+  }
   public messageRedirect(msgId: number) {
     const proute = `/chat/${msgId}`
     this.router.navigate([proute])

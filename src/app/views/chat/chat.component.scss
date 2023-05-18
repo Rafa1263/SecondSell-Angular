@@ -82,6 +82,11 @@ header {
   font-family: Rubik, Verdana, Arial, sans-serif;
   padding: 3%;
 
+  .chats-sel {
+    display: flex;
+    gap: 20px;
+  }
+
   .chat-cat {
     background-color: black;
     padding: 0.5rem;

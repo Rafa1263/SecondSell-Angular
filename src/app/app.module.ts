@@ -24,6 +24,7 @@ import { ChatComponent } from 'src/app/views/chat/chat.component';
 import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
 import { SeenPipeModule } from 'src/app/pipes/seen-pipe.module';
+import { RegisterComponent } from 'src/app/views/register/register.component';
 
 @NgModule({
   declarations: [
@@ -34,10 +35,11 @@ import { SeenPipeModule } from 'src/app/pipes/seen-pipe.module';
     UploadComponent,
     UploadPage,
     HomeComponent,
-    HeaderComponent,
     ProductComponent,
+    HeaderComponent,
     ChatComponent,
     SingleChatComponent,
+    RegisterComponent
 
 
   ],

@@ -16,7 +16,11 @@
 </header>
 <section class="chat-phone">
   <div></div>
-  <p class="chat-cat">Chats</p>
+  <div class="chats-sel">
+    <p (click)="getuserChats()" class="chat-cat">Chats</p>
+    <p (click)="getUserBuyersChats()" class="chat-cat">Compradores</p>
+  </div>
+
   <p class="entrance-chat">Bandeja de Entrada</p>
   <div class="linear"></div>
   <section *ngIf="loaded">
