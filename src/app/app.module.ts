@@ -27,6 +27,7 @@ import { SeenPipeModule } from 'src/app/pipes/seen-pipe.module';
 import { RegisterComponent } from 'src/app/views/register/register.component';
 import { SliderComponent } from 'src/app/components/slider/slider.component';
 import { UserProfileComponent } from 'src/app/views/user-profile/user-profile.component';
+import { OfferComponent } from 'src/app/components/offer/offer.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { UserProfileComponent } from 'src/app/views/user-profile/user-profile.co
     SingleChatComponent,
     RegisterComponent,
     SliderComponent,
-    UserProfileComponent
+    UserProfileComponent,
+    OfferComponent
 
 
   ],

@@ -144,6 +144,7 @@ export class ProductComponent implements OnInit {
             recept: this.seller!.id!,
             conversation: [message],
             productID: parseInt(this.prodid),
+            offers: []
           }
           this.chatService.postChat(chat).subscribe(() => {
             this.chatService.getChats().subscribe(() => {

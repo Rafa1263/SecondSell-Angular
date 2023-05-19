@@ -99,7 +99,7 @@ export class SingleChatComponent implements OnInit {
       emit: this.user!.id!,
       message: messageInput!.value,
       seen: false,
-      created_at: new Date()
+      created_at: new Date(),
     }
     if (created) {
       this.chatService.getChat(this.chat.id!).subscribe((chat: Chat) => {
