@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./offer.component.scss']
 })
 export class OfferComponent {
+  displayOfferPannel() {
+    document.getElementById("showPannel")?.classList.add("displayed")
+  }
+  sendOffer() {
+    let message = {
 
+    }
+  }
 }

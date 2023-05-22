@@ -1,4 +1,11 @@
-<section class="offer-panel">
-  <input type="text" placeholder="Ponga el avlor en €">
-  <input type="button" value="Enviar">
+<section id="showPannel" class="offer-panel">
+  <div class="e-cont">
+    <div class="cross" (click)="displayOfferPannel()">
+      <div class="x"></div>
+      <div class="y"></div>
+    </div>
+    <p>Haz una oferta</p>
+    <input type="number" placeholder="Ponga el valor en €">
+    <input (click)="sendOffer()" class="submit" type="button" value="Enviar">
+  </div>
 </section>

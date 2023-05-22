@@ -113,12 +113,15 @@ export class SingleChatComponent implements OnInit {
           this.chat = chat;
           this.chatService.getMsg(this.chat!.id!).subscribe((message: Message[]) => {
             this.messages = message
-            this.chatService.patchMsg(this.chat.id!, this.direct.id!)
+            this.chatService.patchMsg(this.chat.id!, this.direct.id!).subscribe(() => { })
 
           });
         }
       });
     });
+  }
+  showOfferPannel() {
+    document.getElementById("showPannel")?.classList.remove("displayed")
   }
 
   cancelarSuscripcion(): void {

@@ -1,5 +1,6 @@
 export interface Message {
   emit: number;
+  offer?: string;
   message: string;
   image?: string;
   seen: boolean;
