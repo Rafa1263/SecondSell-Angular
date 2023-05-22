@@ -27,7 +27,7 @@
   </section>
   <div class="linear"></div>
   <section class="live-chat">
-    <ng-container *ngFor="let message of chat.conversation">
+    <ng-container *ngFor="let message of messages">
       <div *ngIf="message.emit == user.id" class="message-e">{{message.message}}</div>
       <div *ngIf="message.emit != user.id" class="message-r">{{message.message}}</div>
 

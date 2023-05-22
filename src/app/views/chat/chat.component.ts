@@ -24,6 +24,7 @@ export class ChatComponent implements OnInit {
   public chatList: Chat[] = []
   public ownChats: Chat[] = []
   public loaded = false
+  public messages: Message[][] = []
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
@@ -54,7 +55,16 @@ export class ChatComponent implements OnInit {
       this.chatService.getChats().subscribe(() => {
         this.chatList = this.chatService.chatList
         this.ownChats = this.chatList.filter((chat: Chat) => chat.emit === this.user.id || chat.recept === this.user.id);
-        this.loaded = true
+        for (let x = 0; x < this.chatList.length; x++) {
+
+          this.chatService.getMsg(this.chatList[x].id!).subscribe((message: Message[]) => {
+            this.messages.push(message);
+            if (x === this.chatList.length - 1) {
+              this.loaded = true
+            }
+          })
+        }
+
       })
     })
   }
@@ -86,13 +96,11 @@ export class ChatComponent implements OnInit {
       emit: this.user!.id!,
       message: messageInput!.value,
       seen: false,
-      created_at: new Date()
+      created_at: new Date(),
+      chatId: -1
     }
     if (created) {
-      chat!.conversation.push(message)
-      this.chatService.putChat(chat!).subscribe(() => {
-
-      })
+      this.chatService.postMsg(message).subscribe(() => { })
     }
 
   }

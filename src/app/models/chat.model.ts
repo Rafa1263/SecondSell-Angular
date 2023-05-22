@@ -4,12 +4,15 @@ export interface Message {
   image?: string;
   seen: boolean;
   created_at: Date;
+  chatId: number;
+
 }
 export interface Offer {
   emit: number;
   offer: string;
   created_at: Date;
   state: number;
+  chatId: number;
 
 }
 export interface Chat {
@@ -17,7 +20,4 @@ export interface Chat {
   emit: number;
   productID: number;
   recept: number;
-  conversation: Message[];
-  offers: Offer[];
-
 }

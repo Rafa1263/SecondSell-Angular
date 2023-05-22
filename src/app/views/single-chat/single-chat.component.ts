@@ -24,6 +24,7 @@ export class SingleChatComponent implements OnInit {
   public products: Product[] = []
   public chatList: Chat[] = []
   public chat: Chat = {} as Chat
+  public messages: Message[] = []
   public loaded = false
   public chatId: string = ''
   public shouldget = true
@@ -66,21 +67,12 @@ export class SingleChatComponent implements OnInit {
         this.product = this.products.find((prodcut: Product) => prodcut.id == this.chat.productID)!
         if (this.user.id === this.chat.recept) {
           this.direct = this.users.find((user: User) => user.id == this.chat.emit)!
-
         }
         else {
           this.direct = this.users.find((user: User) => user.id == this.chat.recept)!
         }
-        this.chat.conversation.forEach((msg: Message) => {
-          if (msg.emit != this.user.id) {
-            msg.seen = true
-          }
-        })
-        this.chatService.putChat(this.chat).subscribe(() => {
-          this.loaded = true
-          this.suscribirPeticion()
-
-        })
+        this.loaded = true
+        this.suscribirPeticion()
       })
     })
   }
@@ -100,13 +92,14 @@ export class SingleChatComponent implements OnInit {
       message: messageInput!.value,
       seen: false,
       created_at: new Date(),
+      chatId: -1
     }
     if (created) {
       this.chatService.getChat(this.chat.id!).subscribe((chat: Chat) => {
         this.chat = chat
-        this.chat!.conversation.push(message)
+        message.chatId = this.chat.id!
         this.shouldget = false
-        this.chatService.putChat(this.chat!).subscribe(() => {
+        this.chatService.postMsg(message).subscribe(() => {
           this.shouldget = true
         })
       })
@@ -118,12 +111,11 @@ export class SingleChatComponent implements OnInit {
       this.chatService.getChat(this.chat.id!).subscribe((chat: Chat) => {
         if (this.shouldget) {
           this.chat = chat;
-          this.chat.conversation.forEach((msg: Message) => {
-            if (msg.emit != this.user.id) {
-              msg.seen = true
-            }
-          })
-          this.chatService.putChat(this.chat).subscribe(() => { })
+          this.chatService.getMsg(this.chat!.id!).subscribe((message: Message[]) => {
+            this.messages = message
+            this.chatService.patchMsg(this.chat.id!, this.direct.id!)
+
+          });
         }
       });
     });
