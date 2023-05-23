@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 import { Product } from 'src/app/models/product.model';
 
@@ -7,12 +7,10 @@ import { Product } from 'src/app/models/product.model';
   templateUrl: './slider.component.html',
   styleUrls: ['./slider.component.scss']
 })
-export class SliderComponent implements OnInit {
+export class SliderComponent {
   @Input() products!: Product[]
   constructor(private router: Router) { }
 
-  ngOnInit(): void {
-  }
   public productRedirect(productId: number) {
     const proute = `/product/${productId}`
     this.router.navigate([proute])

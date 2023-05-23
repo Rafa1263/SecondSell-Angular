@@ -1,8 +1,8 @@
 <section>
   <div *ngFor=" let product of products | pagination : 10  let index = index;">
     <div (click)="productRedirect(product!.id!)">
-      <div>
-        <img [src]="product.photo![0]">
+      <div [ngStyle]="{ 'background-image': 'url(' + product.photo![0] + ')' }">
+
       </div>
       <span>{{product.name}}</span>
       <span>{{product.description | desclen}}</span>

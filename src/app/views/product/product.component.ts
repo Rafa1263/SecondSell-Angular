@@ -50,6 +50,7 @@ export class ProductComponent implements OnInit {
     this.productService.getProducts().subscribe(() => {
       this.route.params.subscribe(params => {
         this.prodid = params['id'];
+        this.pagination = 0
         if (this.prodid != undefined && parseInt(this.prodid) && this.prodid != null) {
           let tempID: number = parseInt(this.prodid)
           let temp = this.productService.productList.find(product => product.id === tempID);
@@ -104,21 +105,28 @@ export class ProductComponent implements OnInit {
 
   }
   public sendMessage() {
+    if (!this.ensureUser()) {
+      this.hideMessageDirect()
+      this.showpannel()
+      return
+    }
     const chat = this.chatList.find(
       (chat) => chat.emit === this.user.id && chat.recept === this.seller.id && chat.productID === this.product.id
     );
     const messageInput = document.getElementById("chat-msg") as HTMLTextAreaElement | null;
 
     const created = Boolean(chat);
-    let message: Message = {
-      emit: this.user!.id!,
-      message: messageInput!.value,
-      seen: false,
-      created_at: new Date(),
-      chatId: chat!.id!,
-    }
+
+
     if (this.canSend) {
       if (created) {
+        let message: Message = {
+          emit: this.user!.id!,
+          message: messageInput!.value,
+          seen: false,
+          created_at: new Date(),
+          chatId: chat!.id!,
+        }
         if (this.ensureUser()) {
           this.canSend = false
           this.chatService.postMsg(message).subscribe(() => {
@@ -134,51 +142,37 @@ export class ProductComponent implements OnInit {
         this.showpannel()
       }
       else {
-        if (this.ensureUser()) {
-          this.canSend = false
 
-          let chat: Chat = {
-            emit: this.user!.id!,
-            recept: this.seller!.id!,
-            productID: parseInt(this.prodid),
-          }
-          this.chatService.postChat(chat).subscribe(() => {
-            this.chatService.getChats().subscribe(() => {
-              this.chatList = this.chatService.chatList
-              this.canSend = true
-              const chat = this.chatList.find(
-                (chat) => chat.emit === this.user.id && chat.recept === this.seller.id && chat.productID === this.product.id
-              );
-              let message: Message = {
-                emit: this.user!.id!,
-                message: messageInput!.value,
-                seen: false,
-                created_at: new Date(),
-                chatId: chat!.id!,
-              }
-              if (created) {
-                if (this.ensureUser()) {
-                  this.canSend = false
-                  this.chatService.postMsg(message).subscribe(() => {
-                    this.hideMessageDirect()
-                    this.showpannel()
-                    this.chatService.getChats().subscribe(() => {
-                      this.chatList = this.chatService.chatList
-                      this.canSend = true
-                    })
-                  })
-                }
-                this.hideMessageDirect()
-                this.showpannel()
-                return
-              }
-            })
-            this.hideMessageDirect()
-            this.showpannel()
-          })
+        this.canSend = false
+
+        let chat: Chat = {
+          emit: this.user!.id!,
+          recept: this.seller!.id!,
+          productID: parseInt(this.prodid),
         }
-        this.hideMessageDirect()
-        this.showpannel()
+        this.chatService.postChat(chat).subscribe(() => {
+          this.chatService.getChats().subscribe(() => {
+            this.chatList = this.chatService.chatList
+            this.canSend = true
+            const chat = this.chatList.find(
+              (chat) => chat.emit === this.user.id && chat.recept === this.seller.id && chat.productID === this.product.id
+            );
+            let message: Message = {
+              emit: this.user!.id!,
+              message: messageInput!.value,
+              seen: false,
+              created_at: new Date(),
+              chatId: chat!.id!,
+            }
+            this.chatService.postMsg(message).subscribe(() => {
+              this.canSend = true
+            })
+          })
+          this.hideMessageDirect()
+          this.showpannel()
+        })
+
+
       }
     }
   }

@@ -16,7 +16,7 @@
   <div class="linear"></div>
   <section [routerLink]="'/product/'+product.id" class="item-inf">
     <div class="item-img">
-      <img *ngIf="product.photo![0]! != 'none'" [src]="product.photo">
+      <img *ngIf="product.photo![0]! != 'none'" [src]="product.photo![0]!">
       <img *ngIf="product.photo![0]! == 'none'"
         src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHaOuVzOscd3MyzXqu_XZGl2T0GuiG989kTWgniDye5Q&s">
     </div>

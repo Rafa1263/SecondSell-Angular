@@ -100,10 +100,18 @@
 <section>
   <div class="state">
     <p class="descSub">Estado : </p>
-    <span>BAD</span>
-    <span>MID</span>
-    <span style="background-color: green;">GOOD</span>
-    <span>NEW</span>
+    <span *ngIf="product.state == 'bad'" style="background-color: red;">BAD</span>
+    <span *ngIf="product.state != 'bad'">BAD</span>
+
+    <span *ngIf="product.state == 'mid'" style="background-color: yellow;">MID</span>
+    <span *ngIf="product.state != 'mid'">MID</span>
+
+    <span *ngIf="product.state == 'good'" style="background-color: green;">GOOD</span>
+    <span *ngIf="product.state != 'good'">GOOD</span>
+
+    <span *ngIf="product.state == 'new'" style="background-color: purple;">NEW</span>
+    <span *ngIf="product.state != 'new'">NEW</span>
+
   </div>
 
   <div>
@@ -123,7 +131,7 @@
       </path></svg>
   </div>
   <br>
-  <app-slider [products]="products"></app-slider>
+  <app-slider [products]="products | sliderFilter:product.id!"></app-slider>
 
 </section>
 
@@ -139,7 +147,7 @@
   </div>
 </section>
 
-<div class="fixed-bar">
+<div *ngIf="product.state" class="fixed-bar">
   <div>
     <div (click)="showMessageDirect()">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">

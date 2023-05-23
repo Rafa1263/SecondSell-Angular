@@ -114,7 +114,9 @@ export class SingleChatComponent implements OnInit {
             this.messages = message
             this.chatService.getOfferById(this.chat!.id!).subscribe((offers: Offer[]) => {
               this.offers = offers
-              this.chatService.patchMsg(this.chat.id!, this.direct.id!).subscribe(() => { })
+              if (this.hasUserMessage(this.messages, this.direct.id!)) {
+                this.chatService.patchMsg(this.chat.id!, this.direct.id!).subscribe(() => { })
+              }
             })
 
           });
@@ -125,7 +127,9 @@ export class SingleChatComponent implements OnInit {
   showOfferPannel() {
     document.getElementById("showPannel")?.classList.remove("displayed")
   }
-
+  hasUserMessage(messages: Message[], userId: number): boolean {
+    return messages.some(message => message.emit === userId);
+  }
   cancelarSuscripcion(): void {
     if (this.subscription) {
       this.subscription.unsubscribe();

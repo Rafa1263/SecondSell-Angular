@@ -1,4 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core'
+import { Product } from 'src/app/models/product.model';
 
 
 
@@ -6,7 +7,8 @@ import { Pipe, PipeTransform } from '@angular/core'
   name: 'sliderFilter',
 })
 export class SliderFilter implements PipeTransform {
-  transform() {
+  transform(products: Product[], pid: number) {
+    return products.filter(product => product.id !== pid);
 
   }
 }
