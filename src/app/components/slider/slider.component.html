@@ -1,5 +1,5 @@
 <section>
-  <div *ngFor=" let product of products  let index = index;">
+  <div *ngFor=" let product of products | pagination : 10  let index = index;">
     <div (click)="productRedirect(product!.id!)">
       <div></div>
       <span>{{product.name}}</span>

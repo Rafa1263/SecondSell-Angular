@@ -29,7 +29,7 @@
               </div>
               <span>{{Product.name | desclen}}</span>
               <div class="last-mssg-chat"><svg
-                  *ngIf="(messages[index][messages[index].length - 1] | seen : user.id!) === 1" style="opacity:1"
+                  *ngIf="(messages[index][messages[index].length - 1] | seen : Seller.id!) === 1" style="opacity:1"
                   viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
@@ -41,7 +41,7 @@
                       stroke="#87CEEB" stroke-width="1.5" stroke-linecap="round"></path>
                   </g>
                 </svg>
-                <svg *ngIf="(messages[index][messages[index].length - 1]  | seen : user.id!) === 2" style="opacity:1"
+                <svg *ngIf="(messages[index][messages[index].length - 1]  | seen : Seller.id!) === 2" style="opacity:1"
                   viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>

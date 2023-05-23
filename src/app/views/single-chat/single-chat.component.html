@@ -1,6 +1,6 @@
-<main>
+<main *ngIf="loaded">
   <section class="direct-info">
-    <div class="direct-profile">
+    <div [routerLink]="'/user/'+direct!.id!" class="direct-profile">
       <div> <img *ngIf="direct.photo != 'none'" [src]="direct.photo">
       </div>
       <p>{{direct.name}} {{direct.lastname}}</p>
@@ -14,7 +14,7 @@
     </div>
   </section>
   <div class="linear"></div>
-  <section class="item-inf">
+  <section [routerLink]="'/product/'+product.id" class="item-inf">
     <div class="item-img">
       <img *ngIf="product.photo != 'none'" [src]="product.photo">
       <img *ngIf="product.photo == 'none'"
@@ -27,9 +27,24 @@
   </section>
   <div class="linear"></div>
   <section class="live-chat">
-    <ng-container *ngFor="let message of messages">
-      <div *ngIf="message.emit == user.id" class="message-e">{{message.message}}</div>
-      <div *ngIf="message.emit != user.id" class="message-r">{{message.message}}</div>
+    <ng-container *ngFor="let message of offers| getByDatePipe: messages">
+      <div *ngIf="message.price && message.emit === user.id" class="message-e offer-msg">
+        <div class="offer-eng">
+          <p>Oferta</p>
+          <div></div>
+          <span>{{message.price}} €</span>
+        </div>
+      </div>
+      <div *ngIf="message.price && message.emit !== user.id" class="message-r offer-msg">
+        <div class="offer-eng">
+          <p>Oferta</p>
+          <div></div>
+          <span>{{message.price}} €</span>
+        </div>
+      </div>
+
+      <div *ngIf="message.emit === user.id && !message.price" class="message-e">{{message.message}}</div>
+      <div *ngIf="message.emit !== user.id && !message.price" class="message-r">{{message.message}}</div>
     </ng-container>
   </section>
   <section class=" chat-espec">
@@ -52,5 +67,5 @@
       </div>
     </div>
   </section>
-  <app-offer id="showPannel" class="displayed"></app-offer>
+  <app-offer [chatId]="chat.id" [emit]="user.id" id="showPannel" class="displayed"></app-offer>
 </main>

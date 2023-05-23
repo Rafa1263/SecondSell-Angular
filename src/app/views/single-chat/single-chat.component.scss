@@ -5,11 +5,10 @@
 
 }
 
-main {
-  margin: 5%;
-}
+main {}
 
 .direct-info {
+  margin: 5%;
   height: 35px;
   display: flex;
   align-items: center;
@@ -41,6 +40,7 @@ main {
 }
 
 .item-inf {
+  margin: 5%;
   margin-top: 1rem;
   align-items: center;
   display: flex;
@@ -80,11 +80,12 @@ main {
   height: 29rem;
   overflow: hidden;
   overflow-y: scroll;
-  border: 1px solid black;
   display: flex;
-  flex-direction: column;
   gap: 20px;
   padding: 10%;
+  margin-bottom: 2rem;
+  flex-direction: column-reverse;
+
 
   .message-r {
     background-color: hsl(0, 0%, 50%, 0.2);
@@ -94,6 +95,30 @@ main {
     text-align: center;
     border-radius: 10px 50px 50px 50px;
 
+  }
+
+  .offer-msg {
+    .offer-eng {
+      padding: 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      div {
+        height: 1px;
+        width: 100%;
+        background-color: black;
+      }
+
+      p {
+        font-size: 1.2rem;
+      }
+
+      span {
+        font-weight: bold;
+
+      }
+    }
   }
 
   .message-e {

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { create } from 'domain';
-import { Chat, Message } from 'src/app/models/chat.model';
+import { Chat, Message, Offer } from 'src/app/models/chat.model';
 import { interval, Subscription } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
 import { Product } from 'src/app/models/product.model';
@@ -28,10 +28,10 @@ export class SingleChatComponent implements OnInit {
   public loaded = false
   public chatId: string = ''
   public shouldget = true
+  public offers: Offer[] = []
   subscription: Subscription | undefined;
 
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
-
   }
   ngOnInit() {
     this.authService.getUsers().subscribe(() => {
@@ -48,10 +48,8 @@ export class SingleChatComponent implements OnInit {
           }
           else {
             this.user = us
-
           }
         })
-
       }
     })
 
@@ -101,6 +99,7 @@ export class SingleChatComponent implements OnInit {
         this.shouldget = false
         this.chatService.postMsg(message).subscribe(() => {
           this.shouldget = true
+          messageInput!.value = ""
         })
       })
 
@@ -113,7 +112,10 @@ export class SingleChatComponent implements OnInit {
           this.chat = chat;
           this.chatService.getMsg(this.chat!.id!).subscribe((message: Message[]) => {
             this.messages = message
-            this.chatService.patchMsg(this.chat.id!, this.direct.id!).subscribe(() => { })
+            this.chatService.getOfferById(this.chat!.id!).subscribe((offers: Offer[]) => {
+              this.offers = offers
+              this.chatService.patchMsg(this.chat.id!, this.direct.id!).subscribe(() => { })
+            })
 
           });
         }

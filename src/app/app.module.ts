@@ -28,6 +28,7 @@ import { RegisterComponent } from 'src/app/views/register/register.component';
 import { SliderComponent } from 'src/app/components/slider/slider.component';
 import { UserProfileComponent } from 'src/app/views/user-profile/user-profile.component';
 import { OfferComponent } from 'src/app/components/offer/offer.component';
+import { getByDatePipeModule } from 'src/app/pipes/message-history-pipe.module';
 
 @NgModule({
   declarations: [
@@ -60,7 +61,9 @@ import { OfferComponent } from 'src/app/components/offer/offer.component';
     DescLenPipeeModule,
     getUserPipeModule,
     getProductPipeModule,
-    SeenPipeModule
+    SeenPipeModule,
+    getByDatePipeModule
+
 
 
 

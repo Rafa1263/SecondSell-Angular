@@ -6,11 +6,12 @@ export interface Message {
   seen: boolean;
   created_at: Date;
   chatId: number;
+  id?: number;
 
 }
 export interface Offer {
   emit: number;
-  offer: string;
+  price: number;
   created_at: Date;
   state: number;
   chatId: number;
