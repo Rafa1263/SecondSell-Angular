@@ -6,7 +6,7 @@
     </span>
     <div></div>
   </div>
-  <input type="button" value="Vender Artículo" />
+  <input routerLink="/upload" type="button" value="Vender Artículo" />
   <a href="">¿Cómo funciona?</a>
 </section>
 <!--FIN PRIMERA SECCIÓN-->
@@ -42,8 +42,7 @@
   <section>
     <div *ngFor=" let product of products | pagination : pagination.pageSize; let index = index;">
       <div (click)="productRedirect(product!.id!)">
-        <div>
-          <img [src]="product.photo![0]">
+        <div [ngStyle]="{ 'background-image': 'url(' + product.photo![0] + ')' }">
         </div>
         <span>{{product.name}}</span>
         <span>{{product.description | desclen}}</span>

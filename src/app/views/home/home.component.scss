@@ -265,6 +265,8 @@ $recent-card-height: 3;
           border: 1px solid black;
           overflow: hidden;
           border-radius: 3px;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
 
         span {

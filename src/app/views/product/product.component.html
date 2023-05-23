@@ -19,9 +19,13 @@
 <!--ITEM NAME-->
 <section>
   <div id="product-img" class="product-image">
-    <div class="sold-info">
+    <div *ngIf="product.active" class="sold-info-active">
       <i style="color:green" class="fa-solid fa-handshake-angle"></i>
       <span>Disponible</span>
+    </div>
+    <div *ngIf="!product.active" class="sold-info-sold">
+      <i style="color:red" class="fa-solid fa-handshake-angle"></i>
+      <span>Vendido</span>
     </div>
     <div class="pagination-product">
       <ng-container *ngFor="let photo of product.photo, let indexP = index">
