@@ -263,6 +263,7 @@ $recent-card-height: 3;
           width: $card-width * 2 - $card-width / 10;
           height: $card-height + $card-height / $recent-card-height;
           border: 1px solid black;
+          overflow: hidden;
           border-radius: 3px;
         }
 

@@ -23,6 +23,7 @@ export class ProductComponent implements OnInit {
   public chatList: Chat[] = []
   public prodid!: string
   public canSend = true
+  public pagination = 0
   constructor(private chatService: ChatService, private router: Router, private route: ActivatedRoute, private productService: ProductService, private authService: AuthService, private categoryService: CategoryService) {
 
   }
@@ -57,6 +58,7 @@ export class ProductComponent implements OnInit {
             this.authService.getUser(this.product.userId).subscribe((us: User) => {
               this.seller = us
               this.products = this.productService.productList
+              document.getElementById("product-img")!.style.backgroundImage = `url('${this.product.photo![this.pagination]}')`
               this.chatService.getChats().subscribe(() => {
                 this.chatList = this.chatService.chatList
               })
@@ -89,6 +91,16 @@ export class ProductComponent implements OnInit {
   }
   public hideMessageDirect() {
     document.getElementById("chat")!.classList.add("displayed")
+  }
+  public isActive(index: number) {
+    const eles = document.querySelectorAll('.active-pagination') as NodeListOf<HTMLElement>;
+    eles.forEach(element => {
+      element.classList.remove('active-pagination');
+    });
+    this.pagination = index
+    document.getElementsByClassName(`known-pagination-${index}`)[0]!.classList.add('active-pagination')
+    document.getElementById("product-img")!.style.backgroundImage = `url('${this.product.photo![this.pagination]}')`
+
 
   }
   public sendMessage() {

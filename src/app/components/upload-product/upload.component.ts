@@ -14,6 +14,9 @@ export class UploadComponent {
   private user: User = {} as User
   // BOOLEANO PARA IDENTIFICAR LA CARGA DE USUARIOS
   private imageString: string = "none"
+  private imageString2: string = "none"
+  private imageString3: string = "none"
+
 
   private loaded = false
   // EN EL CONSTRUCTOR INICIALIZAMOS EL SERVICIO QUE CONTIENE LOS DATOS / FUNCIONES
@@ -65,7 +68,7 @@ export class UploadComponent {
           name: productName.value,
           description: productDescription.value,
           state: selectedValue!,
-          photo: this.imageString,
+          photo: [this.imageString, this.imageString2, this.imageString3],
           price: parseFloat(productPrice.value).toFixed(2),
           categoryId: categoryId,
           userId: this.user.id!,

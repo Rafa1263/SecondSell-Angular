@@ -13,8 +13,8 @@
         <ng-container *ngIf="chat.recept | getuser:user.id!:chat.emit:users as Seller">
           <ng-container *ngIf="chat.productID | getproduct:products as Product">
             <div class="chat-img-eng">
-              <img class="p-img-chat" *ngIf="Product.photo != 'none'" [src]="Product.photo">
-              <img class="p-img-chat" *ngIf="Product.photo == 'none'"
+              <img class="p-img-chat" *ngIf="Product!.photo![0]!= 'none'" [src]="Product.photo">
+              <img class="p-img-chat" *ngIf="Product!.photo![0]! == 'none'"
                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHaOuVzOscd3MyzXqu_XZGl2T0GuiG989kTWgniDye5Q&s">
 
               <div>

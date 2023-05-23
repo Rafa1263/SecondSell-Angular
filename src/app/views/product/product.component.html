@@ -18,17 +18,23 @@
 </section>
 <!--ITEM NAME-->
 <section>
-  <div class="product-image">
+  <div id="product-img" class="product-image">
     <div class="sold-info">
       <i style="color:green" class="fa-solid fa-handshake-angle"></i>
       <span>Disponible</span>
     </div>
     <div class="pagination-product">
-      <div></div>
-      <div></div>
+      <ng-container *ngFor="let photo of product.photo, let indexP = index">
+        <div *ngIf="indexP != 0 && photo != 'none'" [class]="'known-pagination-'+indexP" (click)="isActive(indexP)">
+        </div>
+        <div *ngIf="indexP == 0" [class]="'active-pagination known-pagination-'+indexP" (click)="isActive(indexP)">
+        </div>
+
+      </ng-container>
+
     </div>
   </div>
-  <div class="product-price">
+  <div class=" product-price">
     <span>{{product.name| uppercase}} </span>
   </div>
   <span>{{product.price}} €</span>
@@ -138,7 +144,6 @@
         </path>
       </svg>
       <p>Mensaje</p>
-
     </div>
   </div>
 </div>
