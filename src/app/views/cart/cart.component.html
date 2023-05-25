@@ -1,0 +1,18 @@
+<section class="sect-1">
+  <div class="content-introducer">
+    <div class="title">Tu Cesta</div>
+    <svg width="35" height="35" viewBox="0 0 35 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" clip-rule="evenodd"
+        d="M11.6667 1.45834H23.3334V10.2083H32.0834V33.5417H2.91669V10.2083H11.6667V1.45834ZM11.6667 13.125V17.5H14.5834V13.125H20.4167V17.5H23.3334V13.125H29.1667V30.625H5.83335V13.125H11.6667ZM20.4167 10.2083H14.5834V4.37501H20.4167V10.2083Z"
+        fill="#3E3E3E" />
+    </svg>
+  </div>
+</section>
+
+<section class="products-accepted">
+  <div class="product-container" *ngFor="let item of products">
+    <div class="product-img">
+      <img [src]="item.photo![0]">
+    </div>
+  </div>
+</section>

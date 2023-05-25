@@ -1,0 +1,54 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sect-1 {
+  margin: 5%;
+
+  .content-introducer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    div {
+      font-weight: bold;
+    }
+
+    svg {
+      width: 30px;
+    }
+  }
+}
+
+.products-accepted {
+  width: 100%;
+  height: max-content;
+
+  .product-container {
+    margin-top: 2rem;
+    width: 100%;
+    height: 6rem;
+    padding: 1rem;
+    display: flex;
+    background-color: gray;
+
+    .product-img {
+      align-self: center;
+      width: 4rem;
+      height: 4rem;
+      border-radius: 100%;
+      background-color: white;
+      overflow: hidden;
+
+      img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+
+
+    }
+  }
+}
