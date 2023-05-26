@@ -74,6 +74,8 @@ $recent-card-height: 3;
       height: 25rem;
       object-fit: cover;
       object-position: center;
+      transition: all;
+      transition-duration: 500ms;
     }
 
     .sold-info-sold,

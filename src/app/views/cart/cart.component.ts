@@ -20,6 +20,8 @@ export class CartComponent implements OnInit {
   public user: User = {} as User
   public users: User[] = []
   public products: Product[] = []
+  public selectedProduct: Product = {} as Product
+  public selectedPrice: number[] = [-1, -1]
 
   constructor(private router: Router, private productService: ProductService, private transactionService: TransactionService, private readonly authService: AuthService) {
 
@@ -53,6 +55,23 @@ export class CartComponent implements OnInit {
         })
       })
     })
+  }
+
+  public changeSelected(product: Product): void {
+    this.selectedProduct = product
+    const price = this.productsCart.find((productX: ProductCart) => {
+      return productX.productId == product.id
+    })
+    this.selectedPrice = [product.id!, price?.price! * 2.5]
+  }
+  public deleteSelected(): void {
+
+    this.selectedProduct = {} as Product
+    this.selectedPrice = [-1, -1]
+  }
+  public buy() {
+    this.productService.patchProductCart(this.selectedProduct.id!)
+
   }
 
 }

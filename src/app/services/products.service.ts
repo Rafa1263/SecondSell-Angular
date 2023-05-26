@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user.model';
-import { BehaviorSubject, map, Observable, retry } from 'rxjs';
+import { BehaviorSubject, map, Observable, retry, switchMap, throwError } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
 @Injectable({
   providedIn: 'root'
@@ -29,5 +29,23 @@ export class ProductService {
         this.productList = products
       })))
   }
+  public patchProductCart(productId: number): void {
+    const url = `${this.CONFIG_URL}/products/${productId}`
 
+    const requestBody = {
+      active: false
+    };
+    this.http.get<Product>(url).subscribe((product: Product) => {
+      if (product.id == productId) {
+        this.http.patch<Product>(url, requestBody).subscribe(() => {
+          console.log('buy')
+        })
+
+      }
+    })
+
+
+
+
+  }
 }

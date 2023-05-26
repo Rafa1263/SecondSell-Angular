@@ -9,4 +9,5 @@ export interface User {
   password: string;
   photo?: string;
   token?: string;
+  coins?: number;
 }
