@@ -28,6 +28,5 @@ export class LoginPageComponent implements OnInit {
   }
 
   onLogin(loginForm: any) {
-    console.log(loginForm);
   }
 }

@@ -122,7 +122,6 @@ export class LoginComponent implements OnInit {
         this.authservice.postUser(user).subscribe(() => {
 
           //AVISAMOS DE QUE SE HA CREADO EL USER
-          console.log("User Created")
         })
 
       }

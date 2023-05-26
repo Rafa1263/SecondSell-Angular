@@ -75,9 +75,7 @@ export class UploadComponent {
           active: true
 
         };
-        console.log(product)
         this.productService.postProduct(product).subscribe(() => {
-          console.log("Posted")
         })
 
 

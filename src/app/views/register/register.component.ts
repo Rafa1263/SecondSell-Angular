@@ -21,7 +21,6 @@ export class RegisterComponent implements OnInit {
   }
 
   onLogin(registerForm: any) {
-    console.log(registerForm);
   }
 
 }

@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { User } from 'src/app/models/user.model';
 import { BehaviorSubject, map, Observable, retry, switchMap, throwError } from 'rxjs';
 import { Product } from 'src/app/models/product.model';
-import { Offer } from 'src/app/models/chat.model';
+import { Chat, Offer } from 'src/app/models/chat.model';
 import { Cart, ProductCart } from 'src/app/models/cart.model';
 @Injectable({
   providedIn: 'root'
@@ -23,7 +23,6 @@ export class TransactionService {
 
   // FUNCIÓN PARA HACER POST DE UNA OFERTA
   public postProductCart(offer: Offer, cartId: number, prodcutID: number): Observable<ProductCart> {
-    console.log(prodcutID)
     return this.http.post<ProductCart>(`${this.CONFIG_URL}/productCart`, {
       productId: prodcutID,
       price: offer.price,
@@ -87,8 +86,29 @@ export class TransactionService {
     );
   }
 
+  public patchChat(state: boolean, userId: number, prdouctId: number): Observable<Chat> {
+    const url = `${this.CONFIG_URL}/chats/?emit=${userId}&productId=${prdouctId}`;
+    const requestBody = {
+      closed: state
+    };
+    return this.http.get<Chat[]>(url).pipe(
+      switchMap((chat: Chat[]) => {
 
+        if (Array.isArray(chat) && chat.length > 0) {
+          ;
 
+          return this.http.patch<Chat>(`${this.CONFIG_URL}/chats/${chat[0].id}`, requestBody);
+        }
 
-
+        return throwError('No se encontró ningún producto en el carrito.');
+      })
+    );
+  }
+  public patchUserCoins(ammount: number, userId: number): Observable<User> {
+    const url = `${this.CONFIG_URL}/users/${userId}`;
+    const requestBody = {
+      coins: ammount
+    };
+    return this.http.patch<User>(url, requestBody);
+  }
 }

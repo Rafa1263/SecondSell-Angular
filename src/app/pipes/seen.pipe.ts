@@ -12,8 +12,7 @@ export class SeenPipe implements PipeTransform {
       return 0
     }
     else if (message.seen == false && userId !== message.emit) {
-      console.log(message.emit)
-      console.log(userId)
+    
       return 2
     }
     else if (userId !== message.emit) {

@@ -72,18 +72,24 @@ export class CartComponent implements OnInit {
   public buy() {
     this.authService.getUser(this.user.id!).subscribe(() => {
       if (this.user.coins! < this.selectedPrice[1]) {
+        this.deleteSelected()
         return
       }
       this.productService.patchProductCart(this.selectedProduct.id!).subscribe(() => {
-
-        this.transactionService.getCart(this.user.id!).subscribe(() => {
-          this.transactionService.getProductsCart(this.transactionService.cart.id!).subscribe(() => {
-            this.productsCart = this.transactionService.productCartList
-            this.productService.getProducts().subscribe(() => {
-              this.products = this.productService.productList.filter(product => {
-                return this.productsCart.some(cartItem => cartItem.productId === product.id);
-              });
-
+        this.transactionService.patchChat(true, this.user.id!, this.selectedProduct.id!).subscribe(() => {
+          this.transactionService.patchUserCoins((this.user.coins! - this.selectedPrice[1]), this.user.id!).subscribe(() => {
+            this.authService.getUser(this.user.id!).subscribe(() => {
+              this.transactionService.getCart(this.user.id!).subscribe(() => {
+                this.transactionService.getProductsCart(this.transactionService.cart.id!).subscribe(() => {
+                  this.productsCart = this.transactionService.productCartList
+                  this.productService.getProducts().subscribe(() => {
+                    this.products = this.productService.productList.filter(product => {
+                      return this.productsCart.some(cartItem => cartItem.productId === product.id);
+                    });
+                    this.deleteSelected()
+                  })
+                })
+              })
             })
           })
         })
