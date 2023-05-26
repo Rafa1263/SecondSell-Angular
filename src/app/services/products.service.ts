@@ -29,22 +29,13 @@ export class ProductService {
         this.productList = products
       })))
   }
-  public patchProductCart(productId: number): void {
+  public patchProductCart(productId: number) {
     const url = `${this.CONFIG_URL}/products/${productId}`
 
     const requestBody = {
       active: false
     };
-    this.http.get<Product>(url).subscribe((product: Product) => {
-      if (product.id == productId) {
-        this.http.patch<Product>(url, requestBody).subscribe(() => {
-          console.log('buy')
-        })
-
-      }
-    })
-
-
+    return this.http.patch<Product>(url, requestBody)
 
 
   }

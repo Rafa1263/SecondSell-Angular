@@ -33,8 +33,12 @@ section {
         height: $card-height + calc($card-height / $carrousel-card-height);
         border-radius: 3px;
         overflow: hidden;
-        background-repeat: no-repeat;
-        background-size: cover;
+
+        img {
+          object-fit: contain;
+          width: $card-height +calc($card-height / $carrousel-card-height);
+          height: $card-height +calc($card-height / $carrousel-card-height);
+        }
       }
 
       span {

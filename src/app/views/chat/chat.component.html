@@ -3,7 +3,7 @@
   <div class="chats-sel">
     <p (click)="getuserChats()" class="chat-cat">Chats</p>
     <p (click)="getUserBuyersChats()" class="chat-cat">Compradores</p>
-    <p (click)="getUserBuyersChats()" class="chat-cat">Cerrados</p>
+    <p (click)="getUserClosedChats()" class="chat-cat">Cerrados</p>
   </div>
 
   <p class="entrance-chat">Bandeja de Entrada</p>
@@ -30,8 +30,8 @@
               </div>
               <span>{{Product.name | desclen}}</span>
               <div class="last-mssg-chat"><svg
-                  *ngIf="(messages[index][messages[index].length - 1] | seen : Seller.id!) === 1" style="opacity:1"
-                  viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  *ngIf="(messages[index][messages[index].length - 1] | seen : Seller.id!) === 1 && chat.closed"
+                  style="opacity:1" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
                   <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
                   <g id="SVGRepo_iconCarrier">
@@ -54,7 +54,9 @@
                       stroke-width="1.5" stroke-linecap="round"></path>
                   </g>
                 </svg>
-                <p>{{messages[index][messages[index].length - 1].message}}</p>
+                <p *ngIf="!chat.closed">{{messages[index][messages[index].length - 1].message}}</p>
+                <p *ngIf="chat.closed" style="color:red">Closed</p>
+
               </div>
             </div>
           </ng-container></ng-container>

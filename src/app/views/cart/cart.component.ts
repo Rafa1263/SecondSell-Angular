@@ -70,8 +70,25 @@ export class CartComponent implements OnInit {
     this.selectedPrice = [-1, -1]
   }
   public buy() {
-    this.productService.patchProductCart(this.selectedProduct.id!)
+    this.authService.getUser(this.user.id!).subscribe(() => {
+      if (this.user.coins! < this.selectedPrice[1]) {
+        return
+      }
+      this.productService.patchProductCart(this.selectedProduct.id!).subscribe(() => {
 
+        this.transactionService.getCart(this.user.id!).subscribe(() => {
+          this.transactionService.getProductsCart(this.transactionService.cart.id!).subscribe(() => {
+            this.productsCart = this.transactionService.productCartList
+            this.productService.getProducts().subscribe(() => {
+              this.products = this.productService.productList.filter(product => {
+                return this.productsCart.some(cartItem => cartItem.productId === product.id);
+              });
+
+            })
+          })
+        })
+      })
+    })
   }
 
 }

@@ -82,6 +82,12 @@ export class ChatComponent implements OnInit {
       this.ownChats = this.chatList.filter((chat: Chat) => chat.emit != this.user.id && chat.recept === this.user.id);
     })
   }
+  getUserClosedChats() {
+    this.chatService.getChats().subscribe(() => {
+      this.chatList = this.chatService.chatList
+      this.ownChats = this.chatList.filter((chat: Chat) => chat.closed);
+    })
+  }
   public messageRedirect(msgId: number) {
     const proute = `/chat/${msgId}`
     this.router.navigate([proute])

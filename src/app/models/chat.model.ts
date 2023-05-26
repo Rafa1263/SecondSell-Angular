@@ -10,13 +10,13 @@ export interface Message {
 
 }
 export interface Offer {
-  id?:number;
+  id?: number;
   emit: number;
   price: number;
   created_at: Date;
   state: number;
   chatId: number;
-  productId:number;
+  productId: number;
 
 }
 export interface Chat {
@@ -24,4 +24,5 @@ export interface Chat {
   emit: number;
   productID: number;
   recept: number;
+  closed: boolean;
 }

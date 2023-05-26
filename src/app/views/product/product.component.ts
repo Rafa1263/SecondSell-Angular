@@ -147,6 +147,7 @@ export class ProductComponent implements OnInit {
         this.canSend = false
 
         let chat: Chat = {
+          closed: false,
           emit: this.user!.id!,
           recept: this.seller!.id!,
           productID: parseInt(this.prodid),
