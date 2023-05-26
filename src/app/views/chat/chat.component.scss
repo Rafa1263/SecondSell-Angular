@@ -92,9 +92,10 @@ section+div {
 
       .p-img-chat {
         border-radius: 10px;
-        position: absolute;
         width: 60px;
         height: 60px;
+        position: absolute;
+        object-fit: cover;
       }
 
       div {

@@ -40,7 +40,7 @@
       <div *ngIf="message.emit !== user.id && !message.price" class="message-r">{{message.message}}</div>
     </ng-container>
   </section>
-  <section class=" chat-espec">
+  <section *ngIf="product.active" class=" chat-espec">
     <div class="subcont">
       <div *ngIf="product.userId === user.id" class="offer-button" (click)="showOfferPannel()">Haz una oferta</div>
       <div class="sub-men">
