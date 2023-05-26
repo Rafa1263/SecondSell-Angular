@@ -8,7 +8,7 @@ import { Product } from 'src/app/models/product.model';
 })
 export class SliderFilter implements PipeTransform {
   transform(products: Product[], pid: number) {
-    return products.filter(product => product.id !== pid);
+    return products.filter(product => product.id !== pid && product.active);
 
   }
 }

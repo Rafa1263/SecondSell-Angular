@@ -43,17 +43,23 @@ export class HomeComponent implements OnInit {
     this.pagination.categoryDisplay = false
   }
   public showCategories(): void {
+    const showCats = <HTMLInputElement>document.getElementById("inpt-show")!
+
     if (this.pagination.categoryDisplay === false) {
       document.getElementById("show")!.classList.add("nonMarginTop")
       this.pagination.categorySize = this.categories.length
       this.pagination.categroyBlank = []
       this.pagination.categoryDisplay = true
+      showCats.value = "Ver menos"
+
     }
     else {
       document.getElementById("show")!.classList.remove("nonMarginTop")
       this.pagination.categorySize = this.categorySize
       this.pagination.categroyBlank = this.categoryBlank
       this.pagination.categoryDisplay = false
+      showCats.value = "Ver todas"
+
     }
   }
   public productRedirect(productId: number) {
