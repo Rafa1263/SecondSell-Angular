@@ -12,6 +12,7 @@ export class HeaderComponent implements OnInit {
     if (this.nav) {
 
       this.nav = false
+      document.getElementById("outlet")!.style.display = "block"
       document.getElementById("nav")!.style.height = "0"
       document.getElementById("searchbar-container")!.style.display = "flex";
       // ESTILOS X
@@ -22,10 +23,13 @@ export class HeaderComponent implements OnInit {
       document.getElementById("line3")!.style.width = "1.9rem"
       document.getElementById("line1")!.style.width = "1.9rem"
       document.getElementById("line3")!.style.marginTop = "0px"
+
     }
     else {
 
       this.nav = true
+      document.getElementById("outlet")!.style.display = "none"
+
       // ESTILOS X
       document.getElementById("line1")!.style.transform = "rotate(45deg)"
       document.getElementById("line2")!.style.display = "none"
@@ -38,6 +42,7 @@ export class HeaderComponent implements OnInit {
       // NAV
       document.getElementById("nav")!.style.height = "max-content"
       document.getElementById("searchbar-container")!.style.display = "none";
+
     }
 
   }
