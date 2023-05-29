@@ -40,6 +40,7 @@
       <div *ngIf="message.emit !== user.id && !message.price" class="message-r">{{message.message}}</div>
     </ng-container>
   </section>
+  <p *ngIf="chat.closed" id="state-advisor" style="color:red">Chat Closed</p>
   <section *ngIf="!chat.closed" class=" chat-espec">
     <div class="subcont">
       <div *ngIf="product.userId === user.id" class="offer-button" (click)="showOfferPannel()">Haz una oferta</div>
@@ -55,7 +56,7 @@
               stroke-linecap="round" />
           </g>
         </svg>
-        <input type="text" id="chat-msg" placeholder="Escribe un mensaje...">
+        <input (keyup.enter)="sendMessage()" type="text" id="chat-msg" placeholder="Escribe un mensaje...">
         <p (click)="sendMessage()">Enviar</p>
       </div>
     </div>

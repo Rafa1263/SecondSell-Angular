@@ -72,7 +72,8 @@ export class CartComponent implements OnInit {
   }
   public buy() {
     this.authService.getUser(this.user.id!).subscribe(() => {
-      if (this.user.coins! < this.selectedPrice[1]) {
+      if (this.user.coins! < this.selectedPrice[1] || this.user.coins == null) {
+
         this.deleteSelected()
         return
       }

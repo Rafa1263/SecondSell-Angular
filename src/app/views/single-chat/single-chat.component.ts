@@ -169,7 +169,7 @@ export class SingleChatComponent implements OnInit {
         this.transactionService.getCart(this.user.id!).subscribe(() => {
           if (this.transactionService.cart.id) {
             this.transactionService.getProductCart(this.transactionService.cart.id, offer, this.product.id!).subscribe(() => {
-              if (this.transactionService.productCart.id) {
+              if (this.transactionService.productCart?.id) {
                 this.transactionService.patchProductCart(this.transactionService.productCart.id, offer, this.product.id!).subscribe(() => {
                   this.chatService.patchOffer(1, offer.id!).subscribe(() => {
                     this.chatService.getOfferById(this.chat.id!).subscribe((offers: Offer[]) => {

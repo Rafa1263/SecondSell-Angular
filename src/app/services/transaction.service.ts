@@ -87,7 +87,8 @@ export class TransactionService {
   }
 
   public patchChat(state: boolean, userId: number, prdouctId: number): Observable<Chat> {
-    const url = `${this.CONFIG_URL}/chats/?emit=${userId}&productId=${prdouctId}`;
+    const url = `${this.CONFIG_URL}/chats/?emit=${userId}&productID=${prdouctId}`;
+    console.log(url)
     const requestBody = {
       closed: state
     };

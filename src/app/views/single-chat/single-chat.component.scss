@@ -134,6 +134,17 @@
   }
 }
 
+#state-advisor {
+  align-self: center;
+  position: absolute;
+  font-size: 2rem;
+  margin-top: -2rem;
+  top: auto;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  text-align: center;
+}
 
 .chat-espec {
   margin: 0;
@@ -144,9 +155,12 @@
   right: 0;
   bottom: 0;
   position: fixed;
-  overflow: hidden;
+  overflow-x: hidden;
   display: flex;
   justify-content: center;
+  z-index: 1000;
+
+
 
   .subcont {
     width: 100%;
