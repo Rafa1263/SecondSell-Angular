@@ -101,7 +101,7 @@ export class TransactionService {
           return this.http.patch<Chat>(`${this.CONFIG_URL}/chats/${chat[0].id}`, requestBody);
         }
 
-        return throwError('No se encontró ningún producto en el carrito.');
+        return throwError('No se encontró ningún chat');
       })
     );
   }

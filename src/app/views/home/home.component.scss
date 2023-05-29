@@ -135,9 +135,9 @@ $shadow-1: 6px 6px 12px rgba(0, 0, 0, 0.1);
     grid-template-columns: repeat(3, 1fr);
 
     a {
+      width: 100%;
       justify-self: center;
       height: $card-height;
-      width: $card-width;
       // max-width: 64px;
       display: grid;
       grid-template-columns: 1fr;
