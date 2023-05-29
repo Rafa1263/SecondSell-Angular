@@ -7,9 +7,10 @@
       <div id="line3" class="linear"></div>
     </div>
     <!-- LOGOTYPE -->
-    <span routerLink="/"><img src="../../../assets/images/logotype_white_green.png" alt="Second-sell-logotype" width="80"></span>
+    <span routerLink="/"><img src="../../../assets/images/logotype_white_green.png" alt="Second-sell-logotype"
+        width="80"></span>
     <!-- USER ICON & SHOPPING BAG -->
-    <div class="h-svg">
+    <div class="h-svg"><!-- Display none if no session active -->
       <svg routerLink="/profile" width="20" height="22" viewBox="0 0 20 22" fill="none"
         xmlns="http://www.w3.org/2000/svg">
         <path fill-rule="evenodd" clip-rule="evenodd"
@@ -25,33 +26,48 @@
       </svg>
     </div>
 
+    <!-- LOGIN/REGISTER BUTTONS / Display none if session active -->
+    <div class="registerLoginBttns">
+      <div routerLink="/register" id="registerBttn">
+        <p>Registrarse</p>
+      </div>
+      <div routerLink="/login" id="loginBttn">
+        <p>Iniciar sesion</p>
+      </div>
+    </div>
+
     <!-- SEARCH BAR INPUT -->
     <div id="searchbar-container" onclick="toggleSearchbarContent()">
-        <input type="text" placeholder="Buscar en todas las categorias" id="searchbar" onkeyup="filterFunction()">
-        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-            <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round" stroke-linejoin="round"></path>
+      <div class="searchbar-box">
+        <svg aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
+          <path d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" stroke-linecap="round"
+            stroke-linejoin="round"></path>
         </svg>
-        <div id="dropdown-content">
-            <a href="#Ordenadores">Ordenadores</a>
-            <a href="#Portátiles">Portátiles</a>
-            <a href="#Smartphones">Smartphones</a>
-            <a href="#Tablets">Tablets</a>
-            <a href="#Ebooks">Ebooks</a>
-            <a href="#Componentes">Componentes</a>
-            <a href="#Gaming">Gaming</a>
-            <a href="#Oficina">Oficina</a>
-            <a href="#Redes">Redes</a>
-            <a href="#cables">Cables</a>
-            <a href="#Almacenamiento">Almacenamiento</a>
-            <a href="#Periféricos">Periféricos</a>
-            <a href="#Televisores">Televisores</a>
-            <a href="#Audio">Audio</a>
-            <a href="#Foto">Foto</a>
-            <a href="#Video">Video</a>
-        </div>
+        <input type="text" placeholder="Buscar en todas las categorias" id="searchbar" onkeyup="filterFunction()">
+      </div>
+      <div id="dropdown-content">
+        <a href="#Ordenadores">Ordenadores</a>
+        <a href="#Portátiles">Portátiles</a>
+        <a href="#Smartphones">Smartphones</a>
+        <a href="#Tablets">Tablets</a>
+        <a href="#Ebooks">Ebooks</a>
+        <a href="#Componentes">Componentes</a>
+        <a href="#Gaming">Gaming</a>
+        <a href="#Oficina">Oficina</a>
+        <a href="#Redes">Redes</a>
+        <a href="#cables">Cables</a>
+        <a href="#Almacenamiento">Almacenamiento</a>
+        <a href="#Periféricos">Periféricos</a>
+        <a href="#Televisores">Televisores</a>
+        <a href="#Audio">Audio</a>
+        <a href="#Foto">Foto</a>
+        <a href="#Video">Video</a>
+      </div>
     </div>
-</div>
+  </div>
 </header>
+
 <!-- MENU NAVIGATION -->
 <nav id="nav">
   <section class="nav-eng">
@@ -68,59 +84,59 @@
       </div>
       <div class="n-section-content">
 
-          <div class="n-url-name">
-            <p>Historial de Compras</p>
-            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
-                fill="#141414" />
-            </svg>
-          </div>
+        <div class="n-url-name">
+          <p>Historial de Compras</p>
+          <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
+              fill="#141414" />
+          </svg>
+        </div>
 
-          <div class="n-url-name">
-            <p>Historial de Ventas</p>
-            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
-                fill="#141414" />
-            </svg>
-          </div>
+        <div class="n-url-name">
+          <p>Historial de Ventas</p>
+          <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
+              fill="#141414" />
+          </svg>
+        </div>
 
-          <div class="n-url-name">
-            <p>Artículos publicados</p>
-            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
-                fill="#141414" />
-            </svg>
-          </div>
+        <div class="n-url-name">
+          <p>Artículos publicados</p>
+          <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
+              fill="#141414" />
+          </svg>
+        </div>
 
-          <div class="n-url-name">
-            <p>Buzón de mensajes</p>
-            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
-                fill="#141414" />
-            </svg>
-          </div>
+        <div class="n-url-name">
+          <p>Buzón de mensajes</p>
+          <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
+              fill="#141414" />
+          </svg>
+        </div>
 
-          <div class="n-url-name">
-            <p>Monedero</p>
-            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
-                fill="#141414" />
-            </svg>
-          </div>
+        <div class="n-url-name">
+          <p>Monedero</p>
+          <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
+              fill="#141414" />
+          </svg>
+        </div>
 
-          <div class="n-url-name">
-            <p>Ajustes</p>
-            <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
-                fill="#141414" />
-            </svg>
-          </div>
+        <div class="n-url-name">
+          <p>Ajustes</p>
+          <svg width="8" height="9" viewBox="0 0 8 9" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M7.93182 4.90909L0.613636 8.63636V7.18182L6.22727 4.47727L6.18182 4.56818V4.34091L6.22727 4.43182L0.613636 1.72727V0.272727L7.93182 4V4.90909Z"
+              fill="#141414" />
+          </svg>
+        </div>
 
       </div>
     </section>
@@ -424,12 +440,18 @@
       </div>
       <div class="n-section-content lang">
         <div class="h-lang-cont">
-          <div class="h-lang" title="ESPAÑOL"><img src="../../../assets/icons/spain.png" alt="spain-flag" width="24" height="24"></div>
-          <div class="h-lang" title="ENGLISH"><img src="../../../assets/icons/united-states.png" alt="united-states-flag" width="24" height="24"></div>
-          <div class="h-lang" title="DEUTCH"><img src="../../../assets/icons/germany.png" alt="germany-flag" width="24" height="24"></div>
-          <div class="h-lang" title="FRANÇAIS"><img src="../../../assets/icons/france.png" alt="france-flag" width="24" height="24"></div>
-          <div class="h-lang" title="ITALIANO"><img src="../../../assets/icons/italy.png" alt="italy-flag" width="24" height="24"></div>
-          <div class="h-lang" title="ジャパニーズ"><img src="../../../assets/icons/japan.png" alt="japan-flag" width="24" height="24"></div>
+          <div class="h-lang" title="ESPAÑOL"><img src="../../../assets/icons/spain.png" alt="spain-flag" width="24"
+              height="24"></div>
+          <div class="h-lang" title="ENGLISH"><img src="../../../assets/icons/united-states.png"
+              alt="united-states-flag" width="24" height="24"></div>
+          <div class="h-lang" title="DEUTCH"><img src="../../../assets/icons/germany.png" alt="germany-flag" width="24"
+              height="24"></div>
+          <div class="h-lang" title="FRANÇAIS"><img src="../../../assets/icons/france.png" alt="france-flag" width="24"
+              height="24"></div>
+          <div class="h-lang" title="ITALIANO"><img src="../../../assets/icons/italy.png" alt="italy-flag" width="24"
+              height="24"></div>
+          <div class="h-lang" title="ジャパニーズ"><img src="../../../assets/icons/japan.png" alt="japan-flag" width="24"
+              height="24"></div>
         </div>
         <p class="h-copy">
           ©️ 2023 Second Sell
