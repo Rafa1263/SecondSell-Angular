@@ -136,13 +136,12 @@
 
 #state-advisor {
   align-self: center;
-  position: absolute;
+  position: fixed;
   font-size: 2rem;
-  margin-top: -2rem;
   top: auto;
   left: 0;
   right: 0;
-  bottom: 0;
+  bottom: 2;
   text-align: center;
 }
 

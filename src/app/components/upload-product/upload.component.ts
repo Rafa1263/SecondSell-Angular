@@ -76,6 +76,7 @@ export class UploadComponent {
 
         };
         this.productService.postProduct(product).subscribe(() => {
+          this.router.navigate([`/products/${product.id!}`])
         })
 
 
