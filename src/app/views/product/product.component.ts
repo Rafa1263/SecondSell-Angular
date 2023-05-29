@@ -119,7 +119,7 @@ export class ProductComponent implements OnInit {
     const created = Boolean(chat);
 
 
-    if (this.canSend) {
+    if (this.canSend && this.product.active) {
       if (created) {
         let message: Message = {
           emit: this.user!.id!,

@@ -462,7 +462,7 @@ footer {
   overflow: hidden;
   height: 4rem;
   width: 100%;
-  background-color: whitesmoke;
+  background-color: hsl(0, 0%, 96%, 0.7);
   text-align: center;
 
   div {
@@ -526,7 +526,7 @@ footer {
 
     .c-capsule {
       cursor: pointer;
-      background-color: white;
+      background-color: #ffffffff;
       height: 15rem;
       width: 15rem;
       display: flex;

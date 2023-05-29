@@ -51,6 +51,7 @@ export class CartComponent implements OnInit {
             this.products = this.productService.productList.filter(product => {
               return this.productsCart.some(cartItem => cartItem.productId === product.id);
             });
+            console.log(this.products)
           })
         })
       })

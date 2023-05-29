@@ -61,7 +61,8 @@ export class SingleChatComponent implements OnInit {
       this.chatService.getChats().subscribe(() => {
         this.chatId = this.route.snapshot.paramMap.get('id')!;
         this.chatList = this.chatService.chatList
-        this.chat = this.chatList.find((chat: Chat) => chat.id === parseInt(this.chatId) && chat.emit === this.user.id || chat.recept === this.user.id)!;
+        this.chat = this.chatList!.find((chat: Chat) => chat.id === parseInt(this.chatId) && (chat.emit === this.user.id || chat.recept === this.user.id))!;
+
         if ((this.chat == undefined)) {
           this.router.navigate(['/chat'])
         }
