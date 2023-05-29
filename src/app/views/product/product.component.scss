@@ -80,10 +80,12 @@ $recent-card-height: 3;
 
     .sold-info-sold,
     .sold-info-active {
+      align-self: center;
       grid-row-start: 1;
       grid-column-start: 1;
       grid-column-end: -1;
       width: 35%;
+      height: 3rem;
       border-radius: 30px;
       align-items: center;
       display: grid;
@@ -91,7 +93,6 @@ $recent-card-height: 3;
       justify-self: flex-start;
       grid-template-columns: 0.1fr 0.1fr 0.1fr;
       margin: 5%;
-      height: 2rem;
       justify-content: space-around;
       border: 1px solid black;
       background-color: hsl(0, 0%, 100%, 0.8);
@@ -301,7 +302,7 @@ $recent-card-height: 3;
     width: 90%;
     display: flex;
     position: absolute;
-    margin-top: -2rem;
+    margin-top: 0rem;
     justify-content: space-between;
     align-items: center;
 
