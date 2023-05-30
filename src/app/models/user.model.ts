@@ -10,4 +10,5 @@ export interface User {
   photo?: string;
   token?: string;
   coins?: number;
+  created_at: Date;
 }

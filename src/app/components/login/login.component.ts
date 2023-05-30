@@ -102,6 +102,7 @@ export class LoginComponent implements OnInit {
         password: password.value,
         photo: "default",
         token: token,
+        created_at: new Date()
       }
 
       if (!this.authservice.usuarios.find((us: User) => us.name === user.name)) {

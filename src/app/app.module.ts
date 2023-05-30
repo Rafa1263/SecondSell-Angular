@@ -31,6 +31,7 @@ import { getByDatePipeModule } from 'src/app/pipes/message-history-pipe.module';
 import { SliderFilterModule } from 'src/app/pipes/slider-pipe.module';
 import { CartComponent } from 'src/app/views/cart/cart.component';
 import { FormsModule } from '@angular/forms';
+import { CountlogPipeModule } from 'src/app/pipes/countlog-pipe.module';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { FormsModule } from '@angular/forms';
     getByDatePipeModule,
     SliderFilterModule,
     CommonModule,
-    FormsModule
+    FormsModule,
+    CountlogPipeModule
 
 
 

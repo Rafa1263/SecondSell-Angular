@@ -29,6 +29,11 @@ export class ProductService {
         this.productList = products
       })))
   }
+
+  public getProductsByUserId(userId: number): Observable<Product[]> {
+    return this.http.get<Product[]>(`${this.CONFIG_URL}/products/?userId=${userId}`)
+
+  }
   public patchProductCart(productId: number) {
     const url = `${this.CONFIG_URL}/products/${productId}`
 
