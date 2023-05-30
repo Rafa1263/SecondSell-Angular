@@ -13,9 +13,7 @@ import { ProductService } from 'src/app/services/products.service';
 export class UploadComponent {
   private user: User = {} as User
   // BOOLEANO PARA IDENTIFICAR LA CARGA DE USUARIOS
-  private imageString: string = "none"
-  private imageString2: string = "none"
-  private imageString3: string = "none"
+  public imageString: string[] = ['none', 'none', 'none']
 
 
   private loaded = false
@@ -68,7 +66,7 @@ export class UploadComponent {
           name: productName.value,
           description: productDescription.value,
           state: selectedValue!,
-          photo: [this.imageString, this.imageString2, this.imageString3],
+          photo: this.imageString,
           price: parseFloat(productPrice.value).toFixed(2),
           categoryId: categoryId,
           userId: this.user.id!,
@@ -83,7 +81,7 @@ export class UploadComponent {
       }
     }
   }
-  public updatePhoto(event: Event): void {
+  public updatePhoto(event: Event, index: number): void {
     const file = (event.target as HTMLInputElement)!.files![0];
 
     if (!file) {
@@ -93,7 +91,9 @@ export class UploadComponent {
     const reader = new FileReader();
     reader.readAsDataURL(file);
     reader.onload = () => {
-      this.imageString = reader.result as string;
+      const photoContainers = document.getElementsByClassName("photo-container");
+      const currentContainer = photoContainers[index];
+      this.imageString[index] = reader.result as string;
 
     };
   }
