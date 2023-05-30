@@ -56,7 +56,7 @@
           <p>Moneda</p>
         </div>
         <div class="form-field-coin">
-          <input id="productPrice" type="text" placeholder="Sé razonable...">
+          <input id="productPrice" type="number" placeholder="Sé razonable...">
           <select name="currency" id="currency">
             <option value="€">€</option>
           </select>
@@ -64,11 +64,11 @@
       </div>
       <div class="form-field">
         <label>Estado del producto</label>
-        <select name="state" id="productState">
-          <option value="bad">BAD</option>
-          <option value="mid">MID</option>
-          <option value="good">GOOD</option>
-          <option value="new">NEW</option>
+        <select [(ngModel)]="selectedState" name="state" id="productState">
+          <option [value]="'bad'" [selected]="selectedState === 'BAD'">BAD</option>
+          <option [value]="'mid'" [selected]="selectedState === 'MID'">MID</option>
+          <option [value]="'good'" [selected]="selectedState === 'GOOD'">GOOD</option>
+          <option [value]="'new'" [selected]="selectedState === 'NEW'">NEW</option>
         </select>
       </div>
       <div class="form-field">
@@ -116,6 +116,6 @@
       </div>
     </section>
 
-    <input class="submit" type="button" value="Subir producto">
+    <input (click)="sendProduct()" class="submit" type="button" value="Subir producto">
   </form>
 </main>

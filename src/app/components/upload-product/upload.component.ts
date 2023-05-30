@@ -14,8 +14,9 @@ export class UploadComponent {
   private user: User = {} as User
   // BOOLEANO PARA IDENTIFICAR LA CARGA DE USUARIOS
   public imageString: string[] = ['none', 'none', 'none']
+  public selectedState: string = ''
 
-
+  private cansend = true
   private loaded = false
   // EN EL CONSTRUCTOR INICIALIZAMOS EL SERVICIO QUE CONTIENE LOS DATOS / FUNCIONES
   constructor(
@@ -51,21 +52,22 @@ export class UploadComponent {
     })
   }
   public sendProduct(): void {
-    if (this.loaded == true) {
-      const radioButtons = <HTMLInputElement>document.querySelector('input[name="state"]:checked');
-      const selectedValue = radioButtons ? radioButtons.value : null;
-      const productName = <HTMLInputElement>document.getElementById("name");
-      const productDescription = <HTMLInputElement>document.getElementById("description");
-      const productPrice = <HTMLInputElement>document.getElementById("price");
+    if (this.loaded == true && this.cansend) {
+
+
+      const productName = <HTMLInputElement>document.getElementById("productName");
+      const productDescription = <HTMLInputElement>document.getElementById("productDescription");
+      const productPrice = <HTMLInputElement>document.getElementById("productPrice");
       const categoryId = 0;
-      if (productName.value != "" && productDescription.value != "" && selectedValue != null && productPrice.value != "") {
+      if (productName.value != "" && this.selectedState != "" && productDescription.value != "" && productPrice.value != "") {
+        this.cansend = false
         const now = new Date();
         const product: Product = {
           created_at: now,
           updated_at: now,
           name: productName.value,
           description: productDescription.value,
-          state: selectedValue!,
+          state: this.selectedState,
           photo: this.imageString,
           price: parseFloat(productPrice.value).toFixed(2),
           categoryId: categoryId,
@@ -74,6 +76,7 @@ export class UploadComponent {
 
         };
         this.productService.postProduct(product).subscribe(() => {
+          this.cansend = true
           this.router.navigate([`/products/${product.id!}`])
         })
 

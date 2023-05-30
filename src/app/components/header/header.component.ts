@@ -8,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class HeaderComponent implements OnInit {
   private nav = false
 
-  public showMenu() {
-    if (this.nav) {
+  public showMenu(show?: boolean) {
+    if (this.nav || show) {
 
       this.nav = false
       document.getElementById("outlet")!.style.display = "block"

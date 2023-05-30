@@ -8,7 +8,6 @@ import { ProductComponent } from 'src/app/views/product/product.component';
 import { UploadPage } from 'src/app/views/upload/upload.component';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
 import { ProfileComponent } from 'src/app/views/profile/profile.component';
-import { RegisterComponent } from 'src/app/views/register/register.component';
 import { UserProfileComponent } from 'src/app/views/user-profile/user-profile.component';
 import { CartComponent } from 'src/app/views/cart/cart.component';
 
@@ -28,7 +27,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: LoginPageComponent
   }, {
     path: 'user/:id',
     component: UserProfileComponent

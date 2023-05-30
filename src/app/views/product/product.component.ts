@@ -178,7 +178,30 @@ export class ProductComponent implements OnInit {
       }
     }
   }
+  copiarUrl() {
+    // Obtiene la URL actual
+    const urlActual = window.location.href;
 
+    // Crea un elemento de entrada de texto temporal
+    const elementoTemporal = document.createElement('input');
+    elementoTemporal.value = urlActual;
+
+    // Agrega el elemento temporal al DOM
+    document.body.appendChild(elementoTemporal);
+
+    // Selecciona el texto del elemento temporal
+    elementoTemporal.select();
+    elementoTemporal.setSelectionRange(0, 99999); // Para dispositivos móviles
+
+    // Copia el texto al portapapeles del sistema
+    document.execCommand('copy');
+
+    // Elimina el elemento temporal
+    document.body.removeChild(elementoTemporal);
+
+    // Alerta al usuario que se ha copiado la URL
+    alert('¡URL copiada al portapapeles!');
+  }
   public userRedirect(userId: number) {
     this.router.navigate([`/user/${userId}`])
 

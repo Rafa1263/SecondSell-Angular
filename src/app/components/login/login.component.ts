@@ -72,8 +72,7 @@ export class LoginComponent implements OnInit {
 
         // ACTULIZAMOS LOS CAMBIOS AL USER
         this.authservice.user.next(this.user)
-
-        this.router.navigate(['/']);
+        window.location.reload()
 
 
       }
@@ -120,7 +119,7 @@ export class LoginComponent implements OnInit {
 
         // POSTEAMOS EL USUARIO
         this.authservice.postUser(user).subscribe(() => {
-
+          this.authservice.user.next(user)
           //AVISAMOS DE QUE SE HA CREADO EL USER
         })
 

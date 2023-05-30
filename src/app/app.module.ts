@@ -24,13 +24,13 @@ import { ChatComponent } from 'src/app/views/chat/chat.component';
 import { getProductPipeModule } from 'src/app/pipes/getproduct-pipe.module';
 import { SingleChatComponent } from './views/single-chat/single-chat.component';
 import { SeenPipeModule } from 'src/app/pipes/seen-pipe.module';
-import { RegisterComponent } from 'src/app/views/register/register.component';
 import { SliderComponent } from 'src/app/components/slider/slider.component';
 import { UserProfileComponent } from 'src/app/views/user-profile/user-profile.component';
 import { OfferComponent } from 'src/app/components/offer/offer.component';
 import { getByDatePipeModule } from 'src/app/pipes/message-history-pipe.module';
 import { SliderFilterModule } from 'src/app/pipes/slider-pipe.module';
 import { CartComponent } from 'src/app/views/cart/cart.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -45,7 +45,6 @@ import { CartComponent } from 'src/app/views/cart/cart.component';
     HeaderComponent,
     ChatComponent,
     SingleChatComponent,
-    RegisterComponent,
     SliderComponent,
     UserProfileComponent,
     OfferComponent,
@@ -66,7 +65,9 @@ import { CartComponent } from 'src/app/views/cart/cart.component';
     getProductPipeModule,
     SeenPipeModule,
     getByDatePipeModule,
-    SliderFilterModule
+    SliderFilterModule,
+    CommonModule,
+    FormsModule
 
 
 
